@@ -1,10 +1,65 @@
-import { html, css, LitElement } from "lit";
+import {
+  html,
+  css,
+  LitElement,
+} from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
 
 export class BuildCV extends LitElement {
-  static styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+  static styles = css`
+    @import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
 
+    :host {
+      font-family: "Mulish", sans-serif;
+      box-sizing: border-box;
+    }
 
+    .cv-container {
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      max-width: 900px;
+      aspect-ratio: 17/22;
+    }
+
+    .left-column {
+      width: 75%;
+      border-right: 2px solid black;
+    }
+
+    .basic-info {
+      border-bottom: 2px solid black;
+      padding: 1em;
+    }
+
+    .right-column {
+      width: 25%;
+      padding: 1em;
+    }
+
+    .main-cat {
+      font-weight: bold;
+      font-size: 1em;
+      text-transform: uppercase;
+      border: 2px solid black;
+      padding: 0.25em;
+      width: fit-content;
+    }
+
+    .hello {
+      font-weight: bold;
+      font-size: 3.5em;
+      margin: 0;
+    }
+
+    .experience {
+      padding: 1em;
+    }
+
+    .experience-title {
+      font-size: 2em;
+      border: none;
+      padding-left: 0;
+    }
   `;
 
   static properties = {
@@ -84,13 +139,31 @@ export class BuildCV extends LitElement {
     return html`
       <div class="cv-container">
         <div class="left-column">
-          <div class="basic-info"></div>
-          <div class="experience"></div>
+          <div class="basic-info">
+            <h1 class="main-cat">${this.role}</h1>
+            <p class="hello">Hello, I'm</p>
+            <p class="hello">${this.name}</p>
+            <p class="summary">${this.summary}</p>
+          </div>
+          <div class="experience">
+            <h1 class="main-cat experience-title">Experience</h1>
+            ${this.experience.map(
+              (job) =>
+                html`<div class="job-dates">${job.dates}</div>
+                  <div class="job-role">${job.role}</div>
+                  <div class="job-description">${job.description}</div> `
+            )}
+          </div>
         </div>
         <div class="right-column">
-          <div class="contact"></div>
-          <div class="education"></div>
-          <div class="skills"></div>
+          <div class="contact">
+            browse the bundles, go to https://cdn.jsdelivr.net/gh/lit/dist/ and
+            use the dropdown menu to go to the page for a particular version. On
+            that page, there will be a directory for each type of bundle
+            available for that version. There are two types of bundles:
+          </div>
+          <div class="education">dafsd</div>
+          <div class="skills">afdss</div>
         </div>
       </div>
     `;

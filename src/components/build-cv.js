@@ -14,7 +14,7 @@ export class BuildCV extends LitElement {
     }
 
     .cv-container {
-      padding: 1em;
+      padding: 2em;
       display: flex;
       justify-content: space-between;
       max-width: 900px;
@@ -28,12 +28,12 @@ export class BuildCV extends LitElement {
 
     .basic-info {
       border-bottom: 2px solid black;
-      padding: 1em;
+      padding: 1.25em;
     }
 
     .right-column {
       width: 25%;
-      padding: 1em;
+      padding: 1.25em;
     }
 
     .main-cat {
@@ -47,18 +47,44 @@ export class BuildCV extends LitElement {
 
     .hello {
       font-weight: bold;
-      font-size: 3.5em;
+      font-size: 4em;
       margin: 0;
     }
 
+    .summary,
+    .experience-group {
+      line-height: 1.6;
+    }
+
     .experience {
-      padding: 1em;
+      padding: 1.25em;
+    }
+
+    .experience-jobs {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2em;
     }
 
     .experience-title {
       font-size: 2em;
       border: none;
       padding-left: 0;
+    }
+
+    .job-dates {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .job-role {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .job-company {
+      font-style: italic;
     }
   `;
 
@@ -83,12 +109,14 @@ export class BuildCV extends LitElement {
       {
         dates: "2022-Present",
         role: "Software Engineer",
+        company: "Technology Company LLC",
         description:
           "Lorem ipsum dolor sit amet. At sunt tempora ea labore recusandae ab rerum mollitia non voluptatibus eligendi id quos temporibus et obcaecati dolorem. Sit odio aspernatur At amet incidunt At ullam optio nam dicta quia.",
       },
       {
         dates: "2021-2022",
         role: "Intern, Web Development",
+        company: "Bob's Builders Online",
         description:
           "A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum.",
       },
@@ -147,12 +175,17 @@ export class BuildCV extends LitElement {
           </div>
           <div class="experience">
             <h1 class="main-cat experience-title">Experience</h1>
-            ${this.experience.map(
-              (job) =>
-                html`<div class="job-dates">${job.dates}</div>
-                  <div class="job-role">${job.role}</div>
-                  <div class="job-description">${job.description}</div> `
-            )}
+            <div class="experience-jobs">
+              ${this.experience.map(
+                (job) =>
+                  html`<div class="experience-group">
+                    <div class="job-dates">${job.dates}</div>
+                    <div class="job-role">${job.role}</div>
+                    <div class="job-company">${job.company}</div>
+                    <div class="job-description">${job.description}</div>
+                  </div>`
+              )}
+            </div>
           </div>
         </div>
         <div class="right-column">

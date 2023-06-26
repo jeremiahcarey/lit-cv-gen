@@ -34,6 +34,9 @@ export class BuildCV extends LitElement {
     .right-column {
       width: 25%;
       padding: 1.25em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
     }
 
     .main-cat {
@@ -43,6 +46,10 @@ export class BuildCV extends LitElement {
       border: 2px solid black;
       padding: 0.25em;
       width: fit-content;
+    }
+
+    .main-cat.right {
+      width: 80%;
     }
 
     .hello {
@@ -60,6 +67,10 @@ export class BuildCV extends LitElement {
       padding: 1.25em;
     }
 
+    .experience-group {
+      position: relative;
+    }
+
     .experience-jobs {
       display: flex;
       flex-direction: column;
@@ -75,16 +86,48 @@ export class BuildCV extends LitElement {
 
     .job-dates {
       font-weight: bold;
+      font-size: 0.9rem;
       text-transform: uppercase;
+      transform: translateX(-50%) rotate(-90deg);
+      position: absolute;
+      text-align: center;
+      top: 45%;
+      left: 0.9em;
+      letter-spacing: 0.1rem;
     }
 
     .job-role {
       font-weight: bold;
       text-transform: uppercase;
+      margin-left: 3em;
     }
 
     .job-company {
       font-style: italic;
+      margin-left: 3em;
+    }
+
+    .job-description {
+      margin-left: 3em;
+    }
+
+    .education-group {
+      line-height: 1.6;
+      padding: 1em 0 0 0;
+    }
+
+    .education-finished {
+      font-weight: bold;
+    }
+
+    .skills-list {
+      list-style: none;
+      margin: 0;
+      padding: 1em 0 0 0;
+    }
+
+    .skill {
+      line-height: 1.6em;
     }
   `;
 
@@ -102,7 +145,7 @@ export class BuildCV extends LitElement {
   constructor() {
     super();
     this.role = "Software Engineer";
-    this.name = "Abob Henry";
+    this.name = "Fitzwilliam Darcy";
     this.summary =
       "Frontend engineer experienced in developing modular full-stack JavaScript applications using WebComponents, React, Node, Express, RESTful APIs, and SQL databases.";
     this.experience = [
@@ -190,13 +233,36 @@ export class BuildCV extends LitElement {
         </div>
         <div class="right-column">
           <div class="contact">
-            browse the bundles, go to https://cdn.jsdelivr.net/gh/lit/dist/ and
-            use the dropdown menu to go to the page for a particular version. On
-            that page, there will be a directory for each type of bundle
-            available for that version. There are two types of bundles:
+            <div class="main-cat right">Contact</div>
+            <div class="contact-details">
+              ${Object.values(this.contact).map(
+                (detail) => html`<p>${detail}</p>`
+              )}
+            </div>
           </div>
-          <div class="education">dafsd</div>
-          <div class="skills">afdss</div>
+          <div class="education">
+            <div class="main-cat right">Education</div>
+            <div class="education-details">
+              ${this.education.map(
+                (education) =>
+                  html`<div class="education-group">
+                    <div class="education-finished">
+                      ${education.dateFinished}
+                    </div>
+                    <div class="education-degree">${education.degree}</div>
+                    <div class="education-school">${education.school}</div>
+                  </div>`
+              )}
+            </div>
+          </div>
+          <div class="skills">
+            <div class="main-cat right">Skills</div>
+            <ul class="skills-list">
+              ${this.skills.map(
+                (skill) => html`<li class="skill">${skill}</li>`
+              )}
+            </ul>
+          </div>
         </div>
       </div>
     `;

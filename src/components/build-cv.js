@@ -1,22 +1,18 @@
-import {
-  html,
-  css,
-  LitElement,
-} from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
+import { html, css, LitElement } from "lit";
 
 export class BuildCV extends LitElement {
   static styles = css`
     :host {
       font-family: "Mulish", sans-serif;
-      font-size: 1em
       box-sizing: border-box;
     }
 
     .cv-container {
-      padding: 2rem;
+      padding: 1.5rem;
       display: flex;
-      justify-content: space-between;
-      max-width: 900px;
+      justify-content: center;
+      max-width: 800px;
+      min-width: 500px;
       aspect-ratio: 17/22;
     }
 
@@ -37,11 +33,12 @@ export class BuildCV extends LitElement {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      font-size: 0.85rem;
     }
 
     .main-cat {
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       border: 2px solid black;
       padding: 0.25rem;
@@ -55,8 +52,12 @@ export class BuildCV extends LitElement {
 
     .hello {
       font-weight: 800;
-      font-size: 3.75rem;
+      font-size: 3.25rem;
       margin: 0;
+    }
+
+    .summary {
+      font-size: 0.85rem;
     }
 
     .summary,
@@ -76,18 +77,18 @@ export class BuildCV extends LitElement {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .experience-title {
-      font-size: 2rem;
+      font-size: 1.75rem;
       border: none;
       padding-left: 0;
     }
 
     .job-dates {
       font-weight: bold;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
       transform: translateX(-50%) rotate(-90deg);
       position: absolute;
@@ -110,7 +111,7 @@ export class BuildCV extends LitElement {
 
     .job-description {
       margin-left: 3rem;
-      font-size: 0.87rem;
+      font-size: 0.75rem;
     }
 
     .education-group {
@@ -200,12 +201,6 @@ export class BuildCV extends LitElement {
 
   render() {
     return html`
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;800&display=swap"
-        rel="stylesheet"
-      />
       <div class="cv-container">
         <div class="left-column">
           <div class="basic-info">

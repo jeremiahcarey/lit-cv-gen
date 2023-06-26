@@ -134,72 +134,68 @@ export class BuildCV extends LitElement {
   `;
 
   static properties = {
-    role: { type: String },
-    name: { type: String },
-    summary: { type: String },
-    experience: { type: Array },
-    contact: { type: Object },
-    education: { type: Array },
-    skills: { type: Array },
+    resData: { type: Object },
   };
 
   constructor() {
     super();
-    this.role = "Software Engineer";
-    this.name = "Ichabod Crane";
-    this.summary =
-      "Frontend engineer experienced in developing modular full-stack JavaScript applications using WebComponents, React, Node, Express, RESTful APIs, and SQL databases.";
-    this.experience = [
-      {
-        dates: "2022-Present",
-        role: "Software Engineer",
-        company: "Technology Company LLC",
-        description:
-          "Lorem ipsum dolor sit amet. At sunt tempora ea labore recusandae ab rerum mollitia non voluptatibus eligendi id quos temporibus et obcaecati dolorem. Sit odio aspernatur At amet incidunt At ullam optio nam dicta quia.",
+    this.resData = {
+      role: "Software Engineer",
+      name: "Ichabod Crane",
+      summary:
+        "Frontend engineer experienced in developing modular full-stack JavaScript applications using WebComponents, React, Node, Express, RESTful APIs, and SQL databases.",
+      experience: [
+        {
+          dates: "2022-Present",
+          role: "Software Engineer",
+          company: "Technology Company LLC",
+          description:
+            "Lorem ipsum dolor sit amet. At sunt tempora ea labore recusandae ab rerum mollitia non voluptatibus eligendi id quos temporibus et obcaecati dolorem. Sit odio aspernatur At amet incidunt At ullam optio nam dicta quia.",
+        },
+        {
+          dates: "2021",
+          role: "Junior Web Developer",
+          company: "Bob's Builders Online",
+          description:
+            "A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum.",
+        },
+        {
+          dates: "2020-2021",
+          role: "Intern, Web Development",
+          company: "Bob's Builders Online",
+          description:
+            "A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum.",
+        },
+      ],
+      contact: {
+        email: "ichabod@crane.dev",
+        phone: "123-456-7890",
+        site: "www.crane.dev",
+        city: "Orlando, FL",
       },
-      {
-        dates: "2021",
-        role: "Junior Web Developer",
-        company: "Bob's Builders Online",
-        description:
-          "A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum.",
-      },
-      {
-        dates: "2020-2021",
-        role: "Intern, Web Development",
-        company: "Bob's Builders Online",
-        description:
-          "A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum.",
-      },
-    ];
-    this.contact = {
-      email: "ichabod@crane.dev",
-      phone: "123-456-7890",
-      site: "www.crane.dev",
-      city: "Orlando, FL",
+      education: [
+        {
+          dateFinished: "2017",
+          degree: "Ph.D. Philosophy",
+          school: "UCLA",
+        },
+        {
+          dateFinished: "2007",
+          degree: "B.A. Philosophy",
+          school: "University of Guam",
+        },
+      ],
+      skills: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Web Components",
+        "Lit",
+        "React",
+        "NodeJS",
+        "Python",
+      ],
     };
-    this.education = [
-      {
-        dateFinished: "2017",
-        degree: "Ph.D. Philosophy",
-        school: "UCLA",
-      },
-      {
-        dateFinished: "2007",
-        degree: "B.A. Philosophy",
-        school: "University of Guam",
-      },
-    ];
-    this.skills = [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Web Components",
-      "Lit",
-      "React",
-      "NodeJS",
-      "Python",
-    ];
   }
 
   render() {
@@ -213,15 +209,15 @@ export class BuildCV extends LitElement {
       <div class="cv-container">
         <div class="left-column">
           <div class="basic-info">
-            <h1 class="main-cat">${this.role}</h1>
+            <h1 class="main-cat">${this.resData.role}</h1>
             <p class="hello">Hello, I'm</p>
-            <p class="hello hello-name">${this.name}</p>
-            <p class="summary">${this.summary}</p>
+            <p class="hello hello-name">${this.resData.name}</p>
+            <p class="summary">${this.resData.summary}</p>
           </div>
           <div class="experience">
             <h1 class="main-cat experience-title">Experience</h1>
             <div class="experience-jobs">
-              ${this.experience.map(
+              ${this.resData.experience.map(
                 (job) =>
                   html`<div class="experience-group">
                     <div class="job-dates">${job.dates}</div>
@@ -237,7 +233,7 @@ export class BuildCV extends LitElement {
           <div class="contact">
             <div class="main-cat right">Contact</div>
             <div class="contact-details">
-              ${Object.values(this.contact).map(
+              ${Object.values(this.resData.contact).map(
                 (detail) => html`<p>${detail}</p>`
               )}
             </div>
@@ -245,7 +241,7 @@ export class BuildCV extends LitElement {
           <div class="education">
             <div class="main-cat right">Education</div>
             <div class="education-details">
-              ${this.education.map(
+              ${this.resData.education.map(
                 (education) =>
                   html`<div class="education-group">
                     <div class="education-finished">
@@ -260,7 +256,7 @@ export class BuildCV extends LitElement {
           <div class="skills">
             <div class="main-cat right">Skills</div>
             <ul class="skills-list">
-              ${this.skills.map(
+              ${this.resData.skills.map(
                 (skill) => html`<li class="skill">${skill}</li>`
               )}
             </ul>

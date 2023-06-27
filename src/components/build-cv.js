@@ -5,6 +5,7 @@ export class BuildCV extends LitElement {
     :host {
       font-family: "Mulish", sans-serif;
       box-sizing: border-box;
+      background-color: white;
     }
 
     .cv-container {

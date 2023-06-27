@@ -6,6 +6,7 @@ export class MainApp extends LitElement {
   static styles = css`
     :host {
       font-family: "Mulish", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f6;
     }
     .body-container {
       height: 100%;
@@ -26,15 +27,18 @@ export class MainApp extends LitElement {
 
     .cv-input {
       margin-left: 1rem;
+      padding: 0;
     }
 
     .input-form {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
+      border: 2px solid black;
     }
 
     .cv-result {
       max-width: max-content;
     }
+
     .display-cv {
       margin: 1rem 1rem 1rem 0;
       width: max-content;

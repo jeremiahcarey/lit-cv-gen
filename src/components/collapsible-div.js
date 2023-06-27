@@ -27,15 +27,16 @@ export class CollapsibleDiv extends LitElement {
       content: "-";
     }
     .content {
-      padding: 1rem;
+      padding: 0;
       opacity: 0;
       max-height: 0;
       overflow: auto;
-      transition: ease 0.5s;
+      transition: ease 0.25s;
     }
     .expanded {
       opacity: 1;
-      max-height: 500px;
+      max-height: 300px;
+      padding: 1rem;
     }
   `;
 

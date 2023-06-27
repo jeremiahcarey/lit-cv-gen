@@ -11,13 +11,15 @@ export class CVForm extends LitElement {
     }
 
     .form-container {
-      margin-top: 1rem;
+      margin: 0;
+      padding: 0;
     }
 
     .input-group {
       display: flex;
       align-items: center;
       gap: 1rem;
+      padding: 0;
     }
   `;
 

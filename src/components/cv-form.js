@@ -1,4 +1,5 @@
 import { LitElement, css, html } from "lit";
+import { CollapsibleDiv } from "./collapsible-div";
 
 export class CVForm extends LitElement {
   static properties = {
@@ -8,6 +9,16 @@ export class CVForm extends LitElement {
   static styles = css`
     :host {
     }
+
+    .form-container {
+      margin-top: 1rem;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
   `;
 
   constructor() {
@@ -15,7 +26,16 @@ export class CVForm extends LitElement {
   }
 
   render() {
-    return html` <h1>Enter information below:</h1> `;
+    return html`
+      <div class="form-container">
+        <collapsible-div top-label="Title/Role">
+          <div class="input-group">
+            <label>Job Title</label>
+            <input type="text" />
+          </div>
+        </collapsible-div>
+      </div>
+    `;
   }
 }
 customElements.define("cv-form", CVForm);

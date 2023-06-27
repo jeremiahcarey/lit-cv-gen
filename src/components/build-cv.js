@@ -11,8 +11,7 @@ export class BuildCV extends LitElement {
       padding: 1.5rem;
       display: flex;
       justify-content: center;
-      max-width: 800px;
-      min-width: 500px;
+      width: 700px;
       aspect-ratio: 17/22;
     }
 
@@ -33,12 +32,12 @@ export class BuildCV extends LitElement {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
 
     .main-cat {
       font-weight: bold;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       border: 2px solid black;
       padding: 0.25rem;
@@ -81,14 +80,14 @@ export class BuildCV extends LitElement {
     }
 
     .experience-title {
-      font-size: 1.75rem;
+      font-size: 1.7rem;
       border: none;
       padding-left: 0;
     }
 
     .job-dates {
       font-weight: bold;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
       transform: translateX(-50%) rotate(-90deg);
       position: absolute;
@@ -107,11 +106,13 @@ export class BuildCV extends LitElement {
     .job-company {
       font-style: italic;
       margin-left: 3rem;
+      color: #5d5a5adf;
+      font-size: 0.8rem;
     }
 
     .job-description {
       margin-left: 3rem;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
     }
 
     .education-group {

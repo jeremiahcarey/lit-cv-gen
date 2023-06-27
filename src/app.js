@@ -13,26 +13,52 @@ export class MainApp extends LitElement {
     }
     .page-title {
       text-align: center;
-      font-size: 4rem;
+      font-size: 3.75rem;
+      margin: 0;
+      padding: 0;
+      text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
     }
     .main-container {
       display: flex;
       gap: 1rem;
-      justify-content: space-between;
+      justify-content: space-around;
     }
 
     .cv-input {
-      min-width: 250px;
+      margin-left: 1rem;
+    }
+
+    .input-form {
+      margin-top: 2rem;
     }
 
     .cv-result {
       max-width: max-content;
     }
     .display-cv {
-      margin: 1em;
+      margin: 1rem 1rem 1rem 0;
       width: max-content;
       height: max-content;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .display-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-right: 1rem;
+    }
+
+    .display-header button {
+      width: 125px;
+      height: 35px;
+      border: 3px solid black;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .display-header button:hover {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 7px;
     }
   `;
 
@@ -54,13 +80,20 @@ export class MainApp extends LitElement {
         rel="stylesheet"
       />
       <div class="body-container">
-        <h1 class="page-title">Build a Lit CV</h1>
+        <h1 class="page-title">Build a CV with Lit</h1>
         <div class="main-container">
           <div class="cv-input">
-            <cv-form></cv-form>
+            <h1>Enter Information Below:</h1>
+            <div class="input-header"></div>
+            <div class="input-form">
+              <cv-form></cv-form>
+            </div>
           </div>
           <div class="cv-result">
-            <h1>Result</h1>
+            <div class="display-header">
+              <h1>Result:</h1>
+              <button type="button">Download PDF</button>
+            </div>
             <div class="display-cv">
               <build-cv></build-cv>
             </div>

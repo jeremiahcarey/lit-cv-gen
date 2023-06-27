@@ -6,12 +6,12 @@ export class CollapsibleDiv extends LitElement {
       background-color: black;
       color: white;
       cursor: pointer;
-      padding: 18px;
+      padding: 0.5rem;
       width: 100%;
       border: none;
       text-align: left;
       outline: none;
-      font-size: 18px;
+      font-size: 1.2rem;
     }
     .collapsible-label:hover {
       background-color: #363636;

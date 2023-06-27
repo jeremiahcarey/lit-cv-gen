@@ -9,7 +9,6 @@ export class MainApp extends LitElement {
       background-color: #f5f5f6;
     }
     .body-container {
-      height: 100%;
       overflow: auto;
     }
     .page-title {
@@ -26,8 +25,7 @@ export class MainApp extends LitElement {
     }
 
     .cv-input {
-      margin-left: 1rem;
-      padding: 0;
+      width: 40%;
     }
 
     .input-form {
@@ -67,12 +65,68 @@ export class MainApp extends LitElement {
   `;
 
   static properties = {
-    name: { type: String },
+    resData: { type: Object },
   };
 
   constructor() {
     super();
-    this.name = "Lit App";
+    this.resData = {
+      role: "Software Engineer",
+      name: "Ichabod Crane",
+      summary:
+        "Frontend engineer experienced in developing modular full-stack JavaScript applications using WebComponents, React, Node, Express, RESTful APIs, and SQL databases.",
+      experience: [
+        {
+          dates: "2022-Present",
+          role: "Software Engineer",
+          company: "Technology Company LLC",
+          description:
+            "Lorem ipsum dolor sit amet. At sunt tempora ea labore recusandae ab rerum mollitia non voluptatibus eligendi id quos temporibus et obcaecati dolorem. Sit odio aspernatur At amet incidunt At ullam optio nam dicta quia.",
+        },
+        {
+          dates: "2021",
+          role: "Junior Web Developer",
+          company: "Bob's Builders Online",
+          description:
+            "A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum.",
+        },
+        {
+          dates: "2020-2021",
+          role: "Intern, Web Development",
+          company: "Bob's Builders Online",
+          description:
+            "A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum.",
+        },
+      ],
+      contact: {
+        email: "ichabod@crane.dev",
+        phone: "123-456-7890",
+        site: "www.crane.dev",
+        city: "Orlando, FL",
+      },
+      education: [
+        {
+          dateFinished: "2017",
+          degree: "Ph.D. Philosophy",
+          school: "UCLA",
+        },
+        {
+          dateFinished: "2007",
+          degree: "B.A. Philosophy",
+          school: "University of Guam",
+        },
+      ],
+      skills: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Web Components",
+        "Lit",
+        "React",
+        "NodeJS",
+        "Python",
+      ],
+    };
   }
 
   render() {
@@ -90,7 +144,7 @@ export class MainApp extends LitElement {
             <h1>Enter Information Below:</h1>
             <div class="input-header"></div>
             <div class="input-form">
-              <cv-form></cv-form>
+              <cv-form .resData=${this.resData}></cv-form>
             </div>
           </div>
           <div class="cv-result">
@@ -99,7 +153,7 @@ export class MainApp extends LitElement {
               <button type="button">Download PDF</button>
             </div>
             <div class="display-cv">
-              <build-cv></build-cv>
+              <build-cv .resData=${this.resData}></build-cv>
             </div>
           </div>
         </div>

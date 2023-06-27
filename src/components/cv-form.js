@@ -33,7 +33,18 @@ export class CVForm extends LitElement {
         <collapsible-div top-label="Title/Role">
           <div class="input-group">
             <label>Job Title</label>
-            <input type="text" />
+            <input type="text" placeholder=${this.resData.role} />
+          </div> </collapsible-div
+        ><collapsible-div top-label="Name">
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" placeholder=${this.resData.name} />
+          </div>
+        </collapsible-div>
+        <collapsible-div top-label="Personal Summary">
+          <div class="input-group">
+            <label>Summary</label>
+            <textarea>${this.resData.summary} </textarea>
           </div>
         </collapsible-div>
       </div>

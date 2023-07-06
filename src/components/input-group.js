@@ -15,6 +15,7 @@ export class InputGroup extends LitElement {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+      margin-bottom: 0.5rem;
     }
 
     input {
@@ -28,6 +29,7 @@ export class InputGroup extends LitElement {
     textarea {
       padding: 0.5rem;
       border: 1px solid rgb(218, 209, 209);
+      width: 15rem;
       min-width: 75%;
       height: 5rem;
       border-radius: 0.33em;

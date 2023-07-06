@@ -16,11 +16,8 @@ export class CVForm extends LitElement {
       padding: 0;
     }
 
-    .input-group {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0;
+    .job-header {
+      font-size: 1.5rem;
     }
   `;
 
@@ -52,26 +49,62 @@ export class CVForm extends LitElement {
           ></input-group>
         </collapsible-div>
         <collapsible-div top-label="Experience">
-          <div class="input-group">
-            <label>Role</label>
-            <input type="text" placeholder=${this.resData.experience.role} />
-          </div>
-          <div class="input-group">
-            <label>Company</label>
-            <input type="text" placeholder=${this.resData.experience.company} />
-          </div>
-          <div class="input-group">
-            <label>Dates Worked</label>
-            <input type="text" placeholder=${this.resData.experience.dates} />
-          </div>
-          <div class="input-group">
-            <label>Summary</label>
-            <textarea>${this.resData.summary} </textarea>
-          </div>
-          <div class="input-group">
-            <label>Description of Work Done</label>
-            <textarea>${this.resData.summary} </textarea>
-          </div>
+          ${this.resData.experience.map(
+            (job, index) => html`
+            <div class="experience-group">
+            <h1 class="job-header">Job #${index + 1}</h1>
+              <input-group
+                form-label="Dates"
+                input-type="text"
+                placeholder-info="${job.dates}"
+              ></input-group>
+              <input-group
+                  form-label="Role"
+                  input-type="text"
+                  placeholder-info="${job.role}"
+              ></input-group>
+              <input-group
+                    form-label="Company"
+                    input-type="text"
+                    placeholder-info="${job.company}"
+              ></input-group>
+              <input-group form-label="Summary" input-type=textarea"
+                    placeholder-info="${job.description}">
+              </input-group>
+              </div>
+            `
+          )}
+        </collapsible-div>
+        <collapsible-div top-label="Education">
+          ${this.resData.education.map(
+            (school, index) => html`
+              <div class="experience-group">
+                <h1 class="job-header">Education #${index + 1}</h1>
+                <input-group
+                  form-label="Date Finished"
+                  input-type="text"
+                  placeholder-info="${school.dateFinished}"
+                ></input-group>
+                <input-group
+                  form-label="Degree/Major"
+                  input-type="text"
+                  placeholder-info="${school.degree}"
+                ></input-group>
+                <input-group
+                  form-label="School"
+                  input-type="text"
+                  placeholder-info="${school.school}"
+                ></input-group>
+              </div>
+            `
+          )}
+        </collapsible-div>
+        <collapsible-div top-label="Skills">
+          <input-group
+            form-label="Skills (type skills separated by commas)"
+            input-type="textarea"
+            placeholder-info="${this.resData.skills}"
+          ></input-group>
         </collapsible-div>
       </div>
     `;

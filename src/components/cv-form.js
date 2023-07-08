@@ -151,7 +151,12 @@ export class CVForm extends LitElement {
                           const indexValue = index;
                           const subKey = "dates";
                           const newValue = e.target.value;
-                          this.sendUpdateArrayOfObjects(mainKey, indexValue, subKey, newValue);
+                          this.sendUpdateArrayOfObjects(
+                            mainKey,
+                            indexValue,
+                            subKey,
+                            newValue
+                          );
                         }}
                       />
                     </p>
@@ -256,6 +261,18 @@ export class CVForm extends LitElement {
     this.dispatchEvent(event);
   }
 
-  sendUpdateArrayOfObjects(mainKey, indexValue, subKey, newValue)
+  sendUpdateArrayOfObjects(mainKey, indexValue, subKey, newValue) {
+    const event = new CustomEvent("data-updated-array-objects", {
+      detail: {
+        key1: mainKey,
+        index: indexValue,
+        key2: subKey,
+        value: newValue,
+      },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(event);
+  }
 }
 customElements.define("cv-form", CVForm);

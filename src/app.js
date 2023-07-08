@@ -133,11 +133,13 @@ export class MainApp extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener("data-updated-string", this.handleUpdateString);
+    this.addEventListener('data-updated-array-objects', this.handleUpdateArrayOfObjects);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.removeEventListener("data-updated-string", this.handleUpdateString);
+    this.removeEventListener('data-updated-array-objects', this.handleUpdateArrayOfObjects);
   }
 
   handleUpdateString(event) {
@@ -145,6 +147,13 @@ export class MainApp extends LitElement {
       ...this.resData,
       [event.detail.key]: event.detail.value,
     };
+  }
+
+  handleUpdateArrayOfObjects(event) {
+    this.resData.event.detail.key1 = [
+      { ...resData.event.detail.key1[index], event.detail.key2: event.detail.value },
+      ...resData.event.detail.key1.slice(1)
+    ];  
   }
 
   render() {

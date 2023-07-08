@@ -55,6 +55,7 @@ export class MainApp extends LitElement {
       width: 125px;
       height: 35px;
       border: 3px solid black;
+      border-radius: 8px;
       background-color: white;
       cursor: pointer;
     }
@@ -126,6 +127,23 @@ export class MainApp extends LitElement {
         "NodeJS",
         "Python",
       ],
+    };
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener("data-updated-string", this.handleUpdateString);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener("data-updated-string", this.handleUpdateString);
+  }
+
+  handleUpdateString(event) {
+    this.resData = {
+      ...this.resData,
+      [event.detail.key]: event.detail.value,
     };
   }
 

@@ -63,6 +63,11 @@ export class MainApp extends LitElement {
     .display-header button:hover {
       box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 7px;
     }
+
+    .display-header button:active {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+        rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    }
   `;
 
   static properties = {
@@ -132,7 +137,7 @@ export class MainApp extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener("data-updated-string", this.handleUpdateString);
+    this.addEventListener("data-updated", this.handleUpdate);
     this.addEventListener(
       "data-updated-array-objects",
       this.handleUpdateArrayOfObjects
@@ -141,14 +146,14 @@ export class MainApp extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener("data-updated-string", this.handleUpdateString);
+    this.removeEventListener("data-updated", this.handleUpdate);
     this.removeEventListener(
       "data-updated-array-objects",
       this.handleUpdateArrayOfObjects
     );
   }
 
-  handleUpdateString(event) {
+  handleUpdate(event) {
     this.resData = {
       ...this.resData,
       [event.detail.key]: event.detail.value,

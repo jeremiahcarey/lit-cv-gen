@@ -14,7 +14,7 @@ export class CollapsibleDiv extends LitElement {
       font-size: 1.2rem;
     }
     .collapsible-label:hover {
-      background-color: #363636;
+      background-color: #2f2f2f;
     }
     .collapsible-label:after {
       content: "+";

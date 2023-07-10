@@ -1,5 +1,5 @@
 /*! For license information please see main.js.LICENSE.txt */
-(()=>{"use strict";const t=window,e=t.ShadowRoot&&(void 0===t.ShadyCSS||t.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,i=Symbol(),s=new WeakMap;class n{constructor(t,e,s){if(this._$cssResult$=!0,s!==i)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e}get styleSheet(){let t=this.o;const i=this.t;if(e&&void 0===t){const e=void 0!==i&&1===i.length;e&&(t=s.get(i)),void 0===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),e&&s.set(i,t))}return t}toString(){return this.cssText}}const o=(t,...e)=>{const s=1===t.length?t[0]:e.reduce(((e,i,s)=>e+(t=>{if(!0===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(i)+t[s+1]),t[0]);return new n(s,t,i)},a=e?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const i of t.cssRules)e+=i.cssText;return(t=>new n("string"==typeof t?t:t+"",void 0,i))(e)})(t):t;var r;const l=window,d=l.trustedTypes,c=d?d.emptyScript:"",p=l.reactiveElementPolyfillSupport,h={toAttribute(t,e){switch(e){case Boolean:t=t?c:null;break;case Object:case Array:t=null==t?t:JSON.stringify(t)}return t},fromAttribute(t,e){let i=t;switch(e){case Boolean:i=null!==t;break;case Number:i=null===t?null:Number(t);break;case Object:case Array:try{i=JSON.parse(t)}catch(t){i=null}}return i}},u=(t,e)=>e!==t&&(e==e||t==t),v={attribute:!0,type:String,converter:h,reflect:!1,hasChanged:u},m="finalized";class b extends HTMLElement{constructor(){super(),this._$Ei=new Map,this.isUpdatePending=!1,this.hasUpdated=!1,this._$El=null,this.u()}static addInitializer(t){var e;this.finalize(),(null!==(e=this.h)&&void 0!==e?e:this.h=[]).push(t)}static get observedAttributes(){this.finalize();const t=[];return this.elementProperties.forEach(((e,i)=>{const s=this._$Ep(i,e);void 0!==s&&(this._$Ev.set(s,i),t.push(s))})),t}static createProperty(t,e=v){if(e.state&&(e.attribute=!1),this.finalize(),this.elementProperties.set(t,e),!e.noAccessor&&!this.prototype.hasOwnProperty(t)){const i="symbol"==typeof t?Symbol():"__"+t,s=this.getPropertyDescriptor(t,i,e);void 0!==s&&Object.defineProperty(this.prototype,t,s)}}static getPropertyDescriptor(t,e,i){return{get(){return this[e]},set(s){const n=this[t];this[e]=s,this.requestUpdate(t,n,i)},configurable:!0,enumerable:!0}}static getPropertyOptions(t){return this.elementProperties.get(t)||v}static finalize(){if(this.hasOwnProperty(m))return!1;this[m]=!0;const t=Object.getPrototypeOf(this);if(t.finalize(),void 0!==t.h&&(this.h=[...t.h]),this.elementProperties=new Map(t.elementProperties),this._$Ev=new Map,this.hasOwnProperty("properties")){const t=this.properties,e=[...Object.getOwnPropertyNames(t),...Object.getOwnPropertySymbols(t)];for(const i of e)this.createProperty(i,t[i])}return this.elementStyles=this.finalizeStyles(this.styles),!0}static finalizeStyles(t){const e=[];if(Array.isArray(t)){const i=new Set(t.flat(1/0).reverse());for(const t of i)e.unshift(a(t))}else void 0!==t&&e.push(a(t));return e}static _$Ep(t,e){const i=e.attribute;return!1===i?void 0:"string"==typeof i?i:"string"==typeof t?t.toLowerCase():void 0}u(){var t;this._$E_=new Promise((t=>this.enableUpdating=t)),this._$AL=new Map,this._$Eg(),this.requestUpdate(),null===(t=this.constructor.h)||void 0===t||t.forEach((t=>t(this)))}addController(t){var e,i;(null!==(e=this._$ES)&&void 0!==e?e:this._$ES=[]).push(t),void 0!==this.renderRoot&&this.isConnected&&(null===(i=t.hostConnected)||void 0===i||i.call(t))}removeController(t){var e;null===(e=this._$ES)||void 0===e||e.splice(this._$ES.indexOf(t)>>>0,1)}_$Eg(){this.constructor.elementProperties.forEach(((t,e)=>{this.hasOwnProperty(e)&&(this._$Ei.set(e,this[e]),delete this[e])}))}createRenderRoot(){var i;const s=null!==(i=this.shadowRoot)&&void 0!==i?i:this.attachShadow(this.constructor.shadowRootOptions);return((i,s)=>{e?i.adoptedStyleSheets=s.map((t=>t instanceof CSSStyleSheet?t:t.styleSheet)):s.forEach((e=>{const s=document.createElement("style"),n=t.litNonce;void 0!==n&&s.setAttribute("nonce",n),s.textContent=e.cssText,i.appendChild(s)}))})(s,this.constructor.elementStyles),s}connectedCallback(){var t;void 0===this.renderRoot&&(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),null===(t=this._$ES)||void 0===t||t.forEach((t=>{var e;return null===(e=t.hostConnected)||void 0===e?void 0:e.call(t)}))}enableUpdating(t){}disconnectedCallback(){var t;null===(t=this._$ES)||void 0===t||t.forEach((t=>{var e;return null===(e=t.hostDisconnected)||void 0===e?void 0:e.call(t)}))}attributeChangedCallback(t,e,i){this._$AK(t,i)}_$EO(t,e,i=v){var s;const n=this.constructor._$Ep(t,i);if(void 0!==n&&!0===i.reflect){const o=(void 0!==(null===(s=i.converter)||void 0===s?void 0:s.toAttribute)?i.converter:h).toAttribute(e,i.type);this._$El=t,null==o?this.removeAttribute(n):this.setAttribute(n,o),this._$El=null}}_$AK(t,e){var i;const s=this.constructor,n=s._$Ev.get(t);if(void 0!==n&&this._$El!==n){const t=s.getPropertyOptions(n),o="function"==typeof t.converter?{fromAttribute:t.converter}:void 0!==(null===(i=t.converter)||void 0===i?void 0:i.fromAttribute)?t.converter:h;this._$El=n,this[n]=o.fromAttribute(e,t.type),this._$El=null}}requestUpdate(t,e,i){let s=!0;void 0!==t&&(((i=i||this.constructor.getPropertyOptions(t)).hasChanged||u)(this[t],e)?(this._$AL.has(t)||this._$AL.set(t,e),!0===i.reflect&&this._$El!==t&&(void 0===this._$EC&&(this._$EC=new Map),this._$EC.set(t,i))):s=!1),!this.isUpdatePending&&s&&(this._$E_=this._$Ej())}async _$Ej(){this.isUpdatePending=!0;try{await this._$E_}catch(t){Promise.reject(t)}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var t;if(!this.isUpdatePending)return;this.hasUpdated,this._$Ei&&(this._$Ei.forEach(((t,e)=>this[e]=t)),this._$Ei=void 0);let e=!1;const i=this._$AL;try{e=this.shouldUpdate(i),e?(this.willUpdate(i),null===(t=this._$ES)||void 0===t||t.forEach((t=>{var e;return null===(e=t.hostUpdate)||void 0===e?void 0:e.call(t)})),this.update(i)):this._$Ek()}catch(t){throw e=!1,this._$Ek(),t}e&&this._$AE(i)}willUpdate(t){}_$AE(t){var e;null===(e=this._$ES)||void 0===e||e.forEach((t=>{var e;return null===(e=t.hostUpdated)||void 0===e?void 0:e.call(t)})),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(t)),this.updated(t)}_$Ek(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$E_}shouldUpdate(t){return!0}update(t){void 0!==this._$EC&&(this._$EC.forEach(((t,e)=>this._$EO(e,this[e],t))),this._$EC=void 0),this._$Ek()}updated(t){}firstUpdated(t){}}var g;b[m]=!0,b.elementProperties=new Map,b.elementStyles=[],b.shadowRootOptions={mode:"open"},null==p||p({ReactiveElement:b}),(null!==(r=l.reactiveElementVersions)&&void 0!==r?r:l.reactiveElementVersions=[]).push("1.6.2");const $=window,f=$.trustedTypes,y=f?f.createPolicy("lit-html",{createHTML:t=>t}):void 0,_="$lit$",x=`lit$${(Math.random()+"").slice(9)}$`,A="?"+x,E=`<${A}>`,S=document,w=()=>S.createComment(""),C=t=>null===t||"object"!=typeof t&&"function"!=typeof t,k=Array.isArray,U="[ \t\n\f\r]",O=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,D=/-->/g,j=/>/g,P=RegExp(`>|${U}(?:([^\\s"'>=/]+)(${U}*=${U}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,"g"),H=/'/g,N=/"/g,T=/^(?:script|style|textarea|title)$/i,R=t=>(e,...i)=>({_$litType$:t,strings:e,values:i}),L=R(1),M=(R(2),Symbol.for("lit-noChange")),z=Symbol.for("lit-nothing"),q=new WeakMap,B=S.createTreeWalker(S,129,null,!1),I=(t,e)=>{const i=t.length-1,s=[];let n,o=2===e?"<svg>":"",a=O;for(let e=0;e<i;e++){const i=t[e];let r,l,d=-1,c=0;for(;c<i.length&&(a.lastIndex=c,l=a.exec(i),null!==l);)c=a.lastIndex,a===O?"!--"===l[1]?a=D:void 0!==l[1]?a=j:void 0!==l[2]?(T.test(l[2])&&(n=RegExp("</"+l[2],"g")),a=P):void 0!==l[3]&&(a=P):a===P?">"===l[0]?(a=null!=n?n:O,d=-1):void 0===l[1]?d=-2:(d=a.lastIndex-l[2].length,r=l[1],a=void 0===l[3]?P:'"'===l[3]?N:H):a===N||a===H?a=P:a===D||a===j?a=O:(a=P,n=void 0);const p=a===P&&t[e+1].startsWith("/>")?" ":"";o+=a===O?i+E:d>=0?(s.push(r),i.slice(0,d)+_+i.slice(d)+x+p):i+x+(-2===d?(s.push(void 0),e):p)}const r=o+(t[i]||"<?>")+(2===e?"</svg>":"");if(!Array.isArray(t)||!t.hasOwnProperty("raw"))throw Error("invalid template strings array");return[void 0!==y?y.createHTML(r):r,s]};class V{constructor({strings:t,_$litType$:e},i){let s;this.parts=[];let n=0,o=0;const a=t.length-1,r=this.parts,[l,d]=I(t,e);if(this.el=V.createElement(l,i),B.currentNode=this.el.content,2===e){const t=this.el.content,e=t.firstChild;e.remove(),t.append(...e.childNodes)}for(;null!==(s=B.nextNode())&&r.length<a;){if(1===s.nodeType){if(s.hasAttributes()){const t=[];for(const e of s.getAttributeNames())if(e.endsWith(_)||e.startsWith(x)){const i=d[o++];if(t.push(e),void 0!==i){const t=s.getAttribute(i.toLowerCase()+_).split(x),e=/([.?@])?(.*)/.exec(i);r.push({type:1,index:n,name:e[2],strings:t,ctor:"."===e[1]?K:"?"===e[1]?Q:"@"===e[1]?X:G})}else r.push({type:6,index:n})}for(const e of t)s.removeAttribute(e)}if(T.test(s.tagName)){const t=s.textContent.split(x),e=t.length-1;if(e>0){s.textContent=f?f.emptyScript:"";for(let i=0;i<e;i++)s.append(t[i],w()),B.nextNode(),r.push({type:2,index:++n});s.append(t[e],w())}}}else if(8===s.nodeType)if(s.data===A)r.push({type:2,index:n});else{let t=-1;for(;-1!==(t=s.data.indexOf(x,t+1));)r.push({type:7,index:n}),t+=x.length-1}n++}}static createElement(t,e){const i=S.createElement("template");return i.innerHTML=t,i}}function W(t,e,i=t,s){var n,o,a,r;if(e===M)return e;let l=void 0!==s?null===(n=i._$Co)||void 0===n?void 0:n[s]:i._$Cl;const d=C(e)?void 0:e._$litDirective$;return(null==l?void 0:l.constructor)!==d&&(null===(o=null==l?void 0:l._$AO)||void 0===o||o.call(l,!1),void 0===d?l=void 0:(l=new d(t),l._$AT(t,i,s)),void 0!==s?(null!==(a=(r=i)._$Co)&&void 0!==a?a:r._$Co=[])[s]=l:i._$Cl=l),void 0!==l&&(e=W(t,l._$AS(t,e.values),l,s)),e}class F{constructor(t,e){this._$AV=[],this._$AN=void 0,this._$AD=t,this._$AM=e}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){var e;const{el:{content:i},parts:s}=this._$AD,n=(null!==(e=null==t?void 0:t.creationScope)&&void 0!==e?e:S).importNode(i,!0);B.currentNode=n;let o=B.nextNode(),a=0,r=0,l=s[0];for(;void 0!==l;){if(a===l.index){let e;2===l.type?e=new J(o,o.nextSibling,this,t):1===l.type?e=new l.ctor(o,l.name,l.strings,this,t):6===l.type&&(e=new Y(o,this,t)),this._$AV.push(e),l=s[++r]}a!==(null==l?void 0:l.index)&&(o=B.nextNode(),a++)}return B.currentNode=S,n}v(t){let e=0;for(const i of this._$AV)void 0!==i&&(void 0!==i.strings?(i._$AI(t,i,e),e+=i.strings.length-2):i._$AI(t[e])),e++}}class J{constructor(t,e,i,s){var n;this.type=2,this._$AH=z,this._$AN=void 0,this._$AA=t,this._$AB=e,this._$AM=i,this.options=s,this._$Cp=null===(n=null==s?void 0:s.isConnected)||void 0===n||n}get _$AU(){var t,e;return null!==(e=null===(t=this._$AM)||void 0===t?void 0:t._$AU)&&void 0!==e?e:this._$Cp}get parentNode(){let t=this._$AA.parentNode;const e=this._$AM;return void 0!==e&&11===(null==t?void 0:t.nodeType)&&(t=e.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,e=this){t=W(this,t,e),C(t)?t===z||null==t||""===t?(this._$AH!==z&&this._$AR(),this._$AH=z):t!==this._$AH&&t!==M&&this._(t):void 0!==t._$litType$?this.g(t):void 0!==t.nodeType?this.$(t):(t=>k(t)||"function"==typeof(null==t?void 0:t[Symbol.iterator]))(t)?this.T(t):this._(t)}k(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}$(t){this._$AH!==t&&(this._$AR(),this._$AH=this.k(t))}_(t){this._$AH!==z&&C(this._$AH)?this._$AA.nextSibling.data=t:this.$(S.createTextNode(t)),this._$AH=t}g(t){var e;const{values:i,_$litType$:s}=t,n="number"==typeof s?this._$AC(t):(void 0===s.el&&(s.el=V.createElement(s.h,this.options)),s);if((null===(e=this._$AH)||void 0===e?void 0:e._$AD)===n)this._$AH.v(i);else{const t=new F(n,this),e=t.u(this.options);t.v(i),this.$(e),this._$AH=t}}_$AC(t){let e=q.get(t.strings);return void 0===e&&q.set(t.strings,e=new V(t)),e}T(t){k(this._$AH)||(this._$AH=[],this._$AR());const e=this._$AH;let i,s=0;for(const n of t)s===e.length?e.push(i=new J(this.k(w()),this.k(w()),this,this.options)):i=e[s],i._$AI(n),s++;s<e.length&&(this._$AR(i&&i._$AB.nextSibling,s),e.length=s)}_$AR(t=this._$AA.nextSibling,e){var i;for(null===(i=this._$AP)||void 0===i||i.call(this,!1,!0,e);t&&t!==this._$AB;){const e=t.nextSibling;t.remove(),t=e}}setConnected(t){var e;void 0===this._$AM&&(this._$Cp=t,null===(e=this._$AP)||void 0===e||e.call(this,t))}}class G{constructor(t,e,i,s,n){this.type=1,this._$AH=z,this._$AN=void 0,this.element=t,this.name=e,this._$AM=s,this.options=n,i.length>2||""!==i[0]||""!==i[1]?(this._$AH=Array(i.length-1).fill(new String),this.strings=i):this._$AH=z}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(t,e=this,i,s){const n=this.strings;let o=!1;if(void 0===n)t=W(this,t,e,0),o=!C(t)||t!==this._$AH&&t!==M,o&&(this._$AH=t);else{const s=t;let a,r;for(t=n[0],a=0;a<n.length-1;a++)r=W(this,s[i+a],e,a),r===M&&(r=this._$AH[a]),o||(o=!C(r)||r!==this._$AH[a]),r===z?t=z:t!==z&&(t+=(null!=r?r:"")+n[a+1]),this._$AH[a]=r}o&&!s&&this.j(t)}j(t){t===z?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,null!=t?t:"")}}class K extends G{constructor(){super(...arguments),this.type=3}j(t){this.element[this.name]=t===z?void 0:t}}const Z=f?f.emptyScript:"";class Q extends G{constructor(){super(...arguments),this.type=4}j(t){t&&t!==z?this.element.setAttribute(this.name,Z):this.element.removeAttribute(this.name)}}class X extends G{constructor(t,e,i,s,n){super(t,e,i,s,n),this.type=5}_$AI(t,e=this){var i;if((t=null!==(i=W(this,t,e,0))&&void 0!==i?i:z)===M)return;const s=this._$AH,n=t===z&&s!==z||t.capture!==s.capture||t.once!==s.once||t.passive!==s.passive,o=t!==z&&(s===z||n);n&&this.element.removeEventListener(this.name,this,s),o&&this.element.addEventListener(this.name,this,t),this._$AH=t}handleEvent(t){var e,i;"function"==typeof this._$AH?this._$AH.call(null!==(i=null===(e=this.options)||void 0===e?void 0:e.host)&&void 0!==i?i:this.element,t):this._$AH.handleEvent(t)}}class Y{constructor(t,e,i){this.element=t,this.type=6,this._$AN=void 0,this._$AM=e,this.options=i}get _$AU(){return this._$AM._$AU}_$AI(t){W(this,t)}}const tt=$.litHtmlPolyfillSupport;var et,it;null==tt||tt(V,J),(null!==(g=$.litHtmlVersions)&&void 0!==g?g:$.litHtmlVersions=[]).push("2.7.4");class st extends b{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t,e;const i=super.createRenderRoot();return null!==(t=(e=this.renderOptions).renderBefore)&&void 0!==t||(e.renderBefore=i.firstChild),i}update(t){const e=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=((t,e,i)=>{var s,n;const o=null!==(s=null==i?void 0:i.renderBefore)&&void 0!==s?s:e;let a=o._$litPart$;if(void 0===a){const t=null!==(n=null==i?void 0:i.renderBefore)&&void 0!==n?n:null;o._$litPart$=a=new J(e.insertBefore(w(),t),t,void 0,null!=i?i:{})}return a._$AI(t),a})(e,this.renderRoot,this.renderOptions)}connectedCallback(){var t;super.connectedCallback(),null===(t=this._$Do)||void 0===t||t.setConnected(!0)}disconnectedCallback(){var t;super.disconnectedCallback(),null===(t=this._$Do)||void 0===t||t.setConnected(!1)}render(){return M}}st.finalized=!0,st._$litElement$=!0,null===(et=globalThis.litElementHydrateSupport)||void 0===et||et.call(globalThis,{LitElement:st});const nt=globalThis.litElementPolyfillSupport;null==nt||nt({LitElement:st}),(null!==(it=globalThis.litElementVersions)&&void 0!==it?it:globalThis.litElementVersions=[]).push("3.3.2");class ot extends st{static styles=o`
+(()=>{"use strict";const e=window,t=e.ShadowRoot&&(void 0===e.ShadyCSS||e.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,i=Symbol(),s=new WeakMap;class n{constructor(e,t,s){if(this._$cssResult$=!0,s!==i)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o;const i=this.t;if(t&&void 0===e){const t=void 0!==i&&1===i.length;t&&(e=s.get(i)),void 0===e&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),t&&s.set(i,e))}return e}toString(){return this.cssText}}const a=(e,...t)=>{const s=1===e.length?e[0]:t.reduce(((t,i,s)=>t+(e=>{if(!0===e._$cssResult$)return e.cssText;if("number"==typeof e)return e;throw Error("Value passed to 'css' function must be a 'css' function result: "+e+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(i)+e[s+1]),e[0]);return new n(s,e,i)},r=t?e=>e:e=>e instanceof CSSStyleSheet?(e=>{let t="";for(const i of e.cssRules)t+=i.cssText;return(e=>new n("string"==typeof e?e:e+"",void 0,i))(t)})(e):e;var o;const l=window,d=l.trustedTypes,c=d?d.emptyScript:"",p=l.reactiveElementPolyfillSupport,h={toAttribute(e,t){switch(t){case Boolean:e=e?c:null;break;case Object:case Array:e=null==e?e:JSON.stringify(e)}return e},fromAttribute(e,t){let i=e;switch(t){case Boolean:i=null!==e;break;case Number:i=null===e?null:Number(e);break;case Object:case Array:try{i=JSON.parse(e)}catch(e){i=null}}return i}},u=(e,t)=>t!==e&&(t==t||e==e),v={attribute:!0,type:String,converter:h,reflect:!1,hasChanged:u},m="finalized";class b extends HTMLElement{constructor(){super(),this._$Ei=new Map,this.isUpdatePending=!1,this.hasUpdated=!1,this._$El=null,this.u()}static addInitializer(e){var t;this.finalize(),(null!==(t=this.h)&&void 0!==t?t:this.h=[]).push(e)}static get observedAttributes(){this.finalize();const e=[];return this.elementProperties.forEach(((t,i)=>{const s=this._$Ep(i,t);void 0!==s&&(this._$Ev.set(s,i),e.push(s))})),e}static createProperty(e,t=v){if(t.state&&(t.attribute=!1),this.finalize(),this.elementProperties.set(e,t),!t.noAccessor&&!this.prototype.hasOwnProperty(e)){const i="symbol"==typeof e?Symbol():"__"+e,s=this.getPropertyDescriptor(e,i,t);void 0!==s&&Object.defineProperty(this.prototype,e,s)}}static getPropertyDescriptor(e,t,i){return{get(){return this[t]},set(s){const n=this[e];this[t]=s,this.requestUpdate(e,n,i)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)||v}static finalize(){if(this.hasOwnProperty(m))return!1;this[m]=!0;const e=Object.getPrototypeOf(this);if(e.finalize(),void 0!==e.h&&(this.h=[...e.h]),this.elementProperties=new Map(e.elementProperties),this._$Ev=new Map,this.hasOwnProperty("properties")){const e=this.properties,t=[...Object.getOwnPropertyNames(e),...Object.getOwnPropertySymbols(e)];for(const i of t)this.createProperty(i,e[i])}return this.elementStyles=this.finalizeStyles(this.styles),!0}static finalizeStyles(e){const t=[];if(Array.isArray(e)){const i=new Set(e.flat(1/0).reverse());for(const e of i)t.unshift(r(e))}else void 0!==e&&t.push(r(e));return t}static _$Ep(e,t){const i=t.attribute;return!1===i?void 0:"string"==typeof i?i:"string"==typeof e?e.toLowerCase():void 0}u(){var e;this._$E_=new Promise((e=>this.enableUpdating=e)),this._$AL=new Map,this._$Eg(),this.requestUpdate(),null===(e=this.constructor.h)||void 0===e||e.forEach((e=>e(this)))}addController(e){var t,i;(null!==(t=this._$ES)&&void 0!==t?t:this._$ES=[]).push(e),void 0!==this.renderRoot&&this.isConnected&&(null===(i=e.hostConnected)||void 0===i||i.call(e))}removeController(e){var t;null===(t=this._$ES)||void 0===t||t.splice(this._$ES.indexOf(e)>>>0,1)}_$Eg(){this.constructor.elementProperties.forEach(((e,t)=>{this.hasOwnProperty(t)&&(this._$Ei.set(t,this[t]),delete this[t])}))}createRenderRoot(){var i;const s=null!==(i=this.shadowRoot)&&void 0!==i?i:this.attachShadow(this.constructor.shadowRootOptions);return((i,s)=>{t?i.adoptedStyleSheets=s.map((e=>e instanceof CSSStyleSheet?e:e.styleSheet)):s.forEach((t=>{const s=document.createElement("style"),n=e.litNonce;void 0!==n&&s.setAttribute("nonce",n),s.textContent=t.cssText,i.appendChild(s)}))})(s,this.constructor.elementStyles),s}connectedCallback(){var e;void 0===this.renderRoot&&(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),null===(e=this._$ES)||void 0===e||e.forEach((e=>{var t;return null===(t=e.hostConnected)||void 0===t?void 0:t.call(e)}))}enableUpdating(e){}disconnectedCallback(){var e;null===(e=this._$ES)||void 0===e||e.forEach((e=>{var t;return null===(t=e.hostDisconnected)||void 0===t?void 0:t.call(e)}))}attributeChangedCallback(e,t,i){this._$AK(e,i)}_$EO(e,t,i=v){var s;const n=this.constructor._$Ep(e,i);if(void 0!==n&&!0===i.reflect){const a=(void 0!==(null===(s=i.converter)||void 0===s?void 0:s.toAttribute)?i.converter:h).toAttribute(t,i.type);this._$El=e,null==a?this.removeAttribute(n):this.setAttribute(n,a),this._$El=null}}_$AK(e,t){var i;const s=this.constructor,n=s._$Ev.get(e);if(void 0!==n&&this._$El!==n){const e=s.getPropertyOptions(n),a="function"==typeof e.converter?{fromAttribute:e.converter}:void 0!==(null===(i=e.converter)||void 0===i?void 0:i.fromAttribute)?e.converter:h;this._$El=n,this[n]=a.fromAttribute(t,e.type),this._$El=null}}requestUpdate(e,t,i){let s=!0;void 0!==e&&(((i=i||this.constructor.getPropertyOptions(e)).hasChanged||u)(this[e],t)?(this._$AL.has(e)||this._$AL.set(e,t),!0===i.reflect&&this._$El!==e&&(void 0===this._$EC&&(this._$EC=new Map),this._$EC.set(e,i))):s=!1),!this.isUpdatePending&&s&&(this._$E_=this._$Ej())}async _$Ej(){this.isUpdatePending=!0;try{await this._$E_}catch(e){Promise.reject(e)}const e=this.scheduleUpdate();return null!=e&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var e;if(!this.isUpdatePending)return;this.hasUpdated,this._$Ei&&(this._$Ei.forEach(((e,t)=>this[t]=e)),this._$Ei=void 0);let t=!1;const i=this._$AL;try{t=this.shouldUpdate(i),t?(this.willUpdate(i),null===(e=this._$ES)||void 0===e||e.forEach((e=>{var t;return null===(t=e.hostUpdate)||void 0===t?void 0:t.call(e)})),this.update(i)):this._$Ek()}catch(e){throw t=!1,this._$Ek(),e}t&&this._$AE(i)}willUpdate(e){}_$AE(e){var t;null===(t=this._$ES)||void 0===t||t.forEach((e=>{var t;return null===(t=e.hostUpdated)||void 0===t?void 0:t.call(e)})),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$Ek(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$E_}shouldUpdate(e){return!0}update(e){void 0!==this._$EC&&(this._$EC.forEach(((e,t)=>this._$EO(t,this[t],e))),this._$EC=void 0),this._$Ek()}updated(e){}firstUpdated(e){}}var g;b[m]=!0,b.elementProperties=new Map,b.elementStyles=[],b.shadowRootOptions={mode:"open"},null==p||p({ReactiveElement:b}),(null!==(o=l.reactiveElementVersions)&&void 0!==o?o:l.reactiveElementVersions=[]).push("1.6.2");const $=window,f=$.trustedTypes,y=f?f.createPolicy("lit-html",{createHTML:e=>e}):void 0,x="$lit$",_=`lit$${(Math.random()+"").slice(9)}$`,A="?"+_,E=`<${A}>`,w=document,S=()=>w.createComment(""),C=e=>null===e||"object"!=typeof e&&"function"!=typeof e,k=Array.isArray,O="[ \t\n\f\r]",U=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,D=/-->/g,j=/>/g,P=RegExp(`>|${O}(?:([^\\s"'>=/]+)(${O}*=${O}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,"g"),H=/'/g,N=/"/g,T=/^(?:script|style|textarea|title)$/i,R=e=>(t,...i)=>({_$litType$:e,strings:t,values:i}),L=R(1),M=(R(2),Symbol.for("lit-noChange")),z=Symbol.for("lit-nothing"),q=new WeakMap,B=w.createTreeWalker(w,129,null,!1),I=(e,t)=>{const i=e.length-1,s=[];let n,a=2===t?"<svg>":"",r=U;for(let t=0;t<i;t++){const i=e[t];let o,l,d=-1,c=0;for(;c<i.length&&(r.lastIndex=c,l=r.exec(i),null!==l);)c=r.lastIndex,r===U?"!--"===l[1]?r=D:void 0!==l[1]?r=j:void 0!==l[2]?(T.test(l[2])&&(n=RegExp("</"+l[2],"g")),r=P):void 0!==l[3]&&(r=P):r===P?">"===l[0]?(r=null!=n?n:U,d=-1):void 0===l[1]?d=-2:(d=r.lastIndex-l[2].length,o=l[1],r=void 0===l[3]?P:'"'===l[3]?N:H):r===N||r===H?r=P:r===D||r===j?r=U:(r=P,n=void 0);const p=r===P&&e[t+1].startsWith("/>")?" ":"";a+=r===U?i+E:d>=0?(s.push(o),i.slice(0,d)+x+i.slice(d)+_+p):i+_+(-2===d?(s.push(void 0),t):p)}const o=a+(e[i]||"<?>")+(2===t?"</svg>":"");if(!Array.isArray(e)||!e.hasOwnProperty("raw"))throw Error("invalid template strings array");return[void 0!==y?y.createHTML(o):o,s]};class V{constructor({strings:e,_$litType$:t},i){let s;this.parts=[];let n=0,a=0;const r=e.length-1,o=this.parts,[l,d]=I(e,t);if(this.el=V.createElement(l,i),B.currentNode=this.el.content,2===t){const e=this.el.content,t=e.firstChild;t.remove(),e.append(...t.childNodes)}for(;null!==(s=B.nextNode())&&o.length<r;){if(1===s.nodeType){if(s.hasAttributes()){const e=[];for(const t of s.getAttributeNames())if(t.endsWith(x)||t.startsWith(_)){const i=d[a++];if(e.push(t),void 0!==i){const e=s.getAttribute(i.toLowerCase()+x).split(_),t=/([.?@])?(.*)/.exec(i);o.push({type:1,index:n,name:t[2],strings:e,ctor:"."===t[1]?K:"?"===t[1]?Q:"@"===t[1]?X:G})}else o.push({type:6,index:n})}for(const t of e)s.removeAttribute(t)}if(T.test(s.tagName)){const e=s.textContent.split(_),t=e.length-1;if(t>0){s.textContent=f?f.emptyScript:"";for(let i=0;i<t;i++)s.append(e[i],S()),B.nextNode(),o.push({type:2,index:++n});s.append(e[t],S())}}}else if(8===s.nodeType)if(s.data===A)o.push({type:2,index:n});else{let e=-1;for(;-1!==(e=s.data.indexOf(_,e+1));)o.push({type:7,index:n}),e+=_.length-1}n++}}static createElement(e,t){const i=w.createElement("template");return i.innerHTML=e,i}}function W(e,t,i=e,s){var n,a,r,o;if(t===M)return t;let l=void 0!==s?null===(n=i._$Co)||void 0===n?void 0:n[s]:i._$Cl;const d=C(t)?void 0:t._$litDirective$;return(null==l?void 0:l.constructor)!==d&&(null===(a=null==l?void 0:l._$AO)||void 0===a||a.call(l,!1),void 0===d?l=void 0:(l=new d(e),l._$AT(e,i,s)),void 0!==s?(null!==(r=(o=i)._$Co)&&void 0!==r?r:o._$Co=[])[s]=l:i._$Cl=l),void 0!==l&&(t=W(e,l._$AS(e,t.values),l,s)),t}class F{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){var t;const{el:{content:i},parts:s}=this._$AD,n=(null!==(t=null==e?void 0:e.creationScope)&&void 0!==t?t:w).importNode(i,!0);B.currentNode=n;let a=B.nextNode(),r=0,o=0,l=s[0];for(;void 0!==l;){if(r===l.index){let t;2===l.type?t=new J(a,a.nextSibling,this,e):1===l.type?t=new l.ctor(a,l.name,l.strings,this,e):6===l.type&&(t=new Y(a,this,e)),this._$AV.push(t),l=s[++o]}r!==(null==l?void 0:l.index)&&(a=B.nextNode(),r++)}return B.currentNode=w,n}v(e){let t=0;for(const i of this._$AV)void 0!==i&&(void 0!==i.strings?(i._$AI(e,i,t),t+=i.strings.length-2):i._$AI(e[t])),t++}}class J{constructor(e,t,i,s){var n;this.type=2,this._$AH=z,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=i,this.options=s,this._$Cp=null===(n=null==s?void 0:s.isConnected)||void 0===n||n}get _$AU(){var e,t;return null!==(t=null===(e=this._$AM)||void 0===e?void 0:e._$AU)&&void 0!==t?t:this._$Cp}get parentNode(){let e=this._$AA.parentNode;const t=this._$AM;return void 0!==t&&11===(null==e?void 0:e.nodeType)&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=W(this,e,t),C(e)?e===z||null==e||""===e?(this._$AH!==z&&this._$AR(),this._$AH=z):e!==this._$AH&&e!==M&&this._(e):void 0!==e._$litType$?this.g(e):void 0!==e.nodeType?this.$(e):(e=>k(e)||"function"==typeof(null==e?void 0:e[Symbol.iterator]))(e)?this.T(e):this._(e)}k(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}$(e){this._$AH!==e&&(this._$AR(),this._$AH=this.k(e))}_(e){this._$AH!==z&&C(this._$AH)?this._$AA.nextSibling.data=e:this.$(w.createTextNode(e)),this._$AH=e}g(e){var t;const{values:i,_$litType$:s}=e,n="number"==typeof s?this._$AC(e):(void 0===s.el&&(s.el=V.createElement(s.h,this.options)),s);if((null===(t=this._$AH)||void 0===t?void 0:t._$AD)===n)this._$AH.v(i);else{const e=new F(n,this),t=e.u(this.options);e.v(i),this.$(t),this._$AH=e}}_$AC(e){let t=q.get(e.strings);return void 0===t&&q.set(e.strings,t=new V(e)),t}T(e){k(this._$AH)||(this._$AH=[],this._$AR());const t=this._$AH;let i,s=0;for(const n of e)s===t.length?t.push(i=new J(this.k(S()),this.k(S()),this,this.options)):i=t[s],i._$AI(n),s++;s<t.length&&(this._$AR(i&&i._$AB.nextSibling,s),t.length=s)}_$AR(e=this._$AA.nextSibling,t){var i;for(null===(i=this._$AP)||void 0===i||i.call(this,!1,!0,t);e&&e!==this._$AB;){const t=e.nextSibling;e.remove(),e=t}}setConnected(e){var t;void 0===this._$AM&&(this._$Cp=e,null===(t=this._$AP)||void 0===t||t.call(this,e))}}class G{constructor(e,t,i,s,n){this.type=1,this._$AH=z,this._$AN=void 0,this.element=e,this.name=t,this._$AM=s,this.options=n,i.length>2||""!==i[0]||""!==i[1]?(this._$AH=Array(i.length-1).fill(new String),this.strings=i):this._$AH=z}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(e,t=this,i,s){const n=this.strings;let a=!1;if(void 0===n)e=W(this,e,t,0),a=!C(e)||e!==this._$AH&&e!==M,a&&(this._$AH=e);else{const s=e;let r,o;for(e=n[0],r=0;r<n.length-1;r++)o=W(this,s[i+r],t,r),o===M&&(o=this._$AH[r]),a||(a=!C(o)||o!==this._$AH[r]),o===z?e=z:e!==z&&(e+=(null!=o?o:"")+n[r+1]),this._$AH[r]=o}a&&!s&&this.j(e)}j(e){e===z?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,null!=e?e:"")}}class K extends G{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===z?void 0:e}}const Z=f?f.emptyScript:"";class Q extends G{constructor(){super(...arguments),this.type=4}j(e){e&&e!==z?this.element.setAttribute(this.name,Z):this.element.removeAttribute(this.name)}}class X extends G{constructor(e,t,i,s,n){super(e,t,i,s,n),this.type=5}_$AI(e,t=this){var i;if((e=null!==(i=W(this,e,t,0))&&void 0!==i?i:z)===M)return;const s=this._$AH,n=e===z&&s!==z||e.capture!==s.capture||e.once!==s.once||e.passive!==s.passive,a=e!==z&&(s===z||n);n&&this.element.removeEventListener(this.name,this,s),a&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){var t,i;"function"==typeof this._$AH?this._$AH.call(null!==(i=null===(t=this.options)||void 0===t?void 0:t.host)&&void 0!==i?i:this.element,e):this._$AH.handleEvent(e)}}class Y{constructor(e,t,i){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=i}get _$AU(){return this._$AM._$AU}_$AI(e){W(this,e)}}const ee=$.litHtmlPolyfillSupport;var te,ie;null==ee||ee(V,J),(null!==(g=$.litHtmlVersions)&&void 0!==g?g:$.litHtmlVersions=[]).push("2.7.4");class se extends b{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var e,t;const i=super.createRenderRoot();return null!==(e=(t=this.renderOptions).renderBefore)&&void 0!==e||(t.renderBefore=i.firstChild),i}update(e){const t=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(e),this._$Do=((e,t,i)=>{var s,n;const a=null!==(s=null==i?void 0:i.renderBefore)&&void 0!==s?s:t;let r=a._$litPart$;if(void 0===r){const e=null!==(n=null==i?void 0:i.renderBefore)&&void 0!==n?n:null;a._$litPart$=r=new J(t.insertBefore(S(),e),e,void 0,null!=i?i:{})}return r._$AI(e),r})(t,this.renderRoot,this.renderOptions)}connectedCallback(){var e;super.connectedCallback(),null===(e=this._$Do)||void 0===e||e.setConnected(!0)}disconnectedCallback(){var e;super.disconnectedCallback(),null===(e=this._$Do)||void 0===e||e.setConnected(!1)}render(){return M}}se.finalized=!0,se._$litElement$=!0,null===(te=globalThis.litElementHydrateSupport)||void 0===te||te.call(globalThis,{LitElement:se});const ne=globalThis.litElementPolyfillSupport;null==ne||ne({LitElement:se}),(null!==(ie=globalThis.litElementVersions)&&void 0!==ie?ie:globalThis.litElementVersions=[]).push("3.3.2");class ae extends se{static styles=a`
     .collapsible-label {
       background-color: black;
       color: white;
@@ -12,7 +12,7 @@
       font-size: 1.2rem;
     }
     .collapsible-label:hover {
-      background-color: #363636;
+      background-color: #2f2f2f;
     }
     .collapsible-label:after {
       content: "+";
@@ -47,69 +47,220 @@
       <div class="content ${this.expanded?"expanded":""}">
         <slot></slot>
       </div>
-    `}setExpanded(){this.expanded=!this.expanded}}customElements.define("collapsible-div",ot);class at extends st{static properties={resData:{type:Object},experience:{type:Array},education:{type:Array},skills:{type:Array}};static styles=o`
-    :host {
-    }
+    `}setExpanded(){this.expanded=!this.expanded}}customElements.define("collapsible-div",ae);const re=a`
+  .form-container {
+    margin: 0;
+    padding: 0;
+  }
 
-    .form-container {
-      margin: 0;
-      padding: 0;
-    }
+  .job-header,
+  .ed-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
 
-    .job-header,
-    .ed-header {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
+  .job-header h1,
+  .ed-header h1 {
+    font-size: 1.3rem;
+  }
 
-    .job-header h1,
-    .ed-header h1 {
-      font-size: 1.3rem;
-    }
+  collapsible-div button {
+    font-size: 0.8rem;
+    padding: 0.3rem;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+  }
 
-    collapsible-div button {
-      font-size: 0.8rem;
-      padding: 0.3rem;
-      border: 2px solid black;
-      border-radius: 8px;
-      background-color: white;
-      cursor: pointer;
-    }
+  collapsible-div button:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 7px;
+  }
 
-    collapsible-div button:hover {
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 7px;
-    }
+  collapsible-div button:active {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+      rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  }
 
-    .input-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-    .input-group input {
-      padding: 0.5rem;
-      width: 15rem;
-      min-width: 75%;
-      border: 1px solid rgb(218, 209, 209);
-      border-radius: 0.33em;
-    }
+  .input-group input {
+    padding: 0.5rem;
+    width: 15rem;
+    min-width: 75%;
+    border: 1px solid rgb(218, 209, 209);
+    border-radius: 0.33em;
+  }
 
-    .input-group textarea {
-      padding: 0.5rem;
-      border: 1px solid rgb(218, 209, 209);
-      width: 15rem;
-      min-width: 75%;
-      height: 5rem;
-      border-radius: 0.33em;
-      resize: none;
-    }
+  .input-group textarea {
+    padding: 0.5rem;
+    border: 1px solid rgb(218, 209, 209);
+    width: 15rem;
+    min-width: 75%;
+    height: 5rem;
+    border-radius: 0.33em;
+    resize: none;
+  }
 
-    .input-el {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-  `;constructor(){super()}connectedCallback(){super.connectedCallback(),this.experience=[...this.resData.experience],this.education=[...this.resData.education],this.skills=[...this.resData.skills]}render(){return L`
+  .input-el {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+`;class oe extends se{static properties={resData:{type:Object},experience:{type:Array}};static styles=[re,a`
+      button {
+        font-size: 0.8rem;
+        padding: 0.3rem;
+        border: 2px solid black;
+        border-radius: 8px;
+        background-color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 7px;
+      }
+
+      button:active {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+          rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+      }
+    `];connectedCallback(){super.connectedCallback(),this.experience=[...this.resData.experience]}constructor(){super()}render(){return L`
+      ${this.resData.experience.map(((e,t)=>L`
+          <div class="experience-group">
+            <div class="job-header">
+              <h1>Job #${t+1}</h1>
+              <button type="button" class="delete-ex-btn">Delete Job</button>
+            </div>
+            <div class="input-group">
+              <label
+                >Dates:
+                <p class="input-el">
+                  <input
+                    type="text"
+                    .value="${e.dates}"
+                    @input=${e=>{const i=t,s=e.target.value;this.sendUpdateArrayOfObjects(i,"dates",s)}}
+                  />
+                </p>
+              </label>
+            </div>
+            <div class="input-group">
+              <label
+                >Role:
+                <p class="input-el">
+                  <input
+                    type="text"
+                    .value="${e.role}"
+                    @input=${e=>{const i=t,s=e.target.value;this.sendUpdateArrayOfObjects(i,"role",s)}}
+                  />
+                </p>
+              </label>
+            </div>
+            <div class="input-group">
+              <label
+                >Company:
+                <p class="input-el">
+                  <input
+                    type="text"
+                    .value="${e.company}"
+                    @input=${e=>{const i=t,s=e.target.value;this.sendUpdateArrayOfObjects(i,"company",s)}}
+                  />
+                </p>
+              </label>
+            </div>
+            <div class="input-group">
+              <label
+                >Summary:
+                <p class="input-el">
+                  <textarea
+                    .value=${e.description}
+                    @input=${e=>{const i=t,s=e.target.value;this.sendUpdateArrayOfObjects(i,"description",s)}}
+                  ></textarea>
+                </p>
+              </label>
+            </div>
+            ${t+1==this.resData.experience.length?L`<button type="button" class="add-ed-btn">
+                  Add Education
+                </button>`:z}
+          </div>
+        `))}
+    `}sendUpdateArrayOfObjects(e,t,i){let s;s=structuredClone(this.experience),this.experience=[...s],s[e][t]=i;const n=new CustomEvent("data-updated",{detail:{key:"experience",value:s},bubbles:!0,composed:!0});this.dispatchEvent(n)}}customElements.define("experience-manager",oe);class le extends se{static properties={resData:{type:Object},education:{type:Array}};static styles=[re,a`
+      button {
+        font-size: 0.8rem;
+        padding: 0.3rem;
+        border: 2px solid black;
+        border-radius: 8px;
+        background-color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 7px;
+      }
+
+      button:active {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+          rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+      }
+    `];connectedCallback(){super.connectedCallback(),this.education=[...this.resData.education]}constructor(){super()}render(){return L`
+      ${this.resData.education.map(((e,t)=>L`
+          <div class="education-group">
+            <div class="ed-header">
+              <h1>Education #${t+1}</h1>
+              <button type="button" class="delete-ed-btn">
+                Delete Education
+              </button>
+            </div>
+            <div class="input-group">
+              <label
+                >Date Finished:
+                <p class="input-el">
+                  <input
+                    type="text"
+                    .value="${e.dateFinished}"
+                    @input=${e=>{const i=t,s=e.target.value;this.sendUpdateArrayOfObjects(i,"dateFinished",s)}}
+                  />
+                </p>
+              </label>
+            </div>
+            <div class="input-group">
+              <label
+                >Degree/Major:
+                <p class="input-el">
+                  <input
+                    type="text"
+                    .value="${e.degree}"
+                    @input=${e=>{const i=t,s=e.target.value;this.sendUpdateArrayOfObjects(i,"degree",s)}}
+                  />
+                </p>
+              </label>
+            </div>
+            <div class="input-group">
+              <label
+                >School:
+                <p class="input-el">
+                  <input
+                    type="text"
+                    .value="${e.school}"
+                    @input=${e=>{const i=t,s=e.target.value;this.sendUpdateArrayOfObjects(i,"school",s)}}
+                  />
+                </p>
+              </label>
+            </div>
+            ${t+1==this.resData.education.length?L`<button
+                  type="button"
+                  class="add-ed-btn"
+                  @click=${e=>console.log("clicked")}
+                >
+                  Add Education
+                </button>`:z}
+          </div>
+        `))}
+    `}sendUpdateArrayOfObjects(e,t,i){let s;s=structuredClone(this.education),this.education=[...s],s[e][t]=i;const n=new CustomEvent("data-updated",{detail:{key:"education",value:s},bubbles:!0,composed:!0});this.dispatchEvent(n)}}customElements.define("education-manager",le);class de extends se{static properties={resData:{type:Object},experience:{type:Array},education:{type:Array},skills:{type:Array}};static styles=[re,a``];constructor(){super()}connectedCallback(){super.connectedCallback(),this.experience=[...this.resData.experience],this.education=[...this.resData.education],this.skills=[...this.resData.skills]}render(){return L`
       <div class="form-container">
         <collapsible-div top-label="Title/Role">
           <div class="input-group">
@@ -119,7 +270,7 @@
                 <input
                   type="text"
                   .value="${this.resData.role}"
-                  @input=${t=>{const e=t.target.value;this.sendUpdateString("role",e)}}
+                  @input=${e=>{const t=e.target.value;this.sendUpdateSimple("role",t)}}
                 />
               </p>
             </label>
@@ -132,7 +283,7 @@
                 <input
                   type="text"
                   .value="${this.resData.name}"
-                  @input=${t=>{const e=t.target.value;this.sendUpdateString("name",e)}}
+                  @input=${e=>{const t=e.target.value;this.sendUpdateSimple("name",t)}}
                 />
               </p>
             </label>
@@ -145,128 +296,17 @@
               <p class="input-el">
                 <textarea
                   .value=${this.resData.summary}
-                  @input=${t=>{const e=t.target.value;this.sendUpdateString("summary",e)}}
+                  @input=${e=>{const t=e.target.value;this.sendUpdateSimple("summary",t)}}
                 ></textarea>
               </p>
             </label>
           </div>
         </collapsible-div>
         <collapsible-div top-label="Experience">
-          ${this.resData.experience.map(((t,e)=>L`
-              <div class="experience-group">
-                <div class="job-header">
-                  <h1>Job #${e+1}</h1>
-                  <button type="button" class="delete-ex-btn">
-                    Delete Job
-                  </button>
-                </div>
-                <div class="input-group">
-                  <label
-                    >Dates:
-                    <p class="input-el">
-                      <input
-                        type="text"
-                        .value="${t.dates}"
-                        @input=${t=>{const i=e,s=t.target.value;this.sendUpdateArrayOfObjects("experience",i,"dates",s)}}
-                      />
-                    </p>
-                  </label>
-                </div>
-                <div class="input-group">
-                  <label
-                    >Role:
-                    <p class="input-el">
-                      <input
-                        type="text"
-                        .value="${t.role}"
-                        @input=${t=>{const i=e,s=t.target.value;this.sendUpdateArrayOfObjects("experience",i,"role",s)}}
-                      />
-                    </p>
-                  </label>
-                </div>
-                <div class="input-group">
-                  <label
-                    >Company:
-                    <p class="input-el">
-                      <input
-                        type="text"
-                        .value="${t.company}"
-                        @input=${t=>{const i=e,s=t.target.value;this.sendUpdateArrayOfObjects("experience",i,"company",s)}}
-                      />
-                    </p>
-                  </label>
-                </div>
-                <div class="input-group">
-                  <label
-                    >Summary:
-                    <p class="input-el">
-                      <textarea
-                        .value=${t.description}
-                        @input=${t=>{const i=e,s=t.target.value;this.sendUpdateArrayOfObjects("experience",i,"description",s)}}
-                      ></textarea>
-                    </p>
-                  </label>
-                </div>
-                ${e+1==this.resData.experience.length?L`<button type="button" class="add-ed-btn">
-                      Add Education
-                    </button>`:z}
-              </div>
-            `))}
+          <experience-manager .resData=${this.resData}></experience-manager>
         </collapsible-div>
         <collapsible-div top-label="Education">
-          ${this.resData.education.map(((t,e)=>L`
-              <div class="education-group">
-                <div class="ed-header">
-                  <h1>Education #${e+1}</h1>
-                  <button type="button" class="delete-ed-btn">
-                    Delete Education
-                  </button>
-                </div>
-                <div class="input-group">
-                  <label
-                    >Date Finished:
-                    <p class="input-el">
-                      <input
-                        type="text"
-                        .value="${t.dateFinished}"
-                        @input=${t=>{const i=e,s=t.target.value;this.sendUpdateArrayOfObjects("education",i,"dateFinished",s)}}
-                      />
-                    </p>
-                  </label>
-                </div>
-                <div class="input-group">
-                  <label
-                    >Degree/Major:
-                    <p class="input-el">
-                      <input
-                        type="text"
-                        .value="${t.degree}"
-                        @input=${t=>{const i=e,s=t.target.value;this.sendUpdateArrayOfObjects("education",i,"degree",s)}}
-                      />
-                    </p>
-                  </label>
-                </div>
-                <div class="input-group">
-                  <label
-                    >School:
-                    <p class="input-el">
-                      <input
-                        type="text"
-                        .value="${t.school}"
-                        @input=${t=>{const i=e,s=t.target.value;this.sendUpdateArrayOfObjects("education",i,"school",s)}}
-                      />
-                    </p>
-                  </label>
-                </div>
-                ${e+1==this.resData.education.length?L`<button
-                      type="button"
-                      class="add-ed-btn"
-                      @click=${t=>console.log("clicked")}
-                    >
-                      Add Education
-                    </button>`:z}
-              </div>
-            `))}
+          <education-manager .resData=${this.resData}></education-manager>
         </collapsible-div>
         <collapsible-div top-label="Skills">
           <div class="input-group">
@@ -279,7 +319,7 @@
           </div>
         </collapsible-div>
       </div>
-    `}sendUpdateString(t,e){const i=new CustomEvent("data-updated-string",{detail:{key:t,value:e},bubbles:!0,composed:!0});this.dispatchEvent(i)}sendUpdateArrayOfObjects(t,e,i,s){let n;"education"===t?(n=structuredClone(this.education),this.education=[...n]):(n=structuredClone(this.experience),this.experience=[...n]),n[e][i]=s;const o=new CustomEvent("data-updated-array-objects",{detail:{key:t,value:n},bubbles:!0,composed:!0});this.dispatchEvent(o)}}customElements.define("cv-form",at);class rt extends st{static styles=o`
+    `}sendUpdateSimple(e,t){const i=new CustomEvent("data-updated",{detail:{key:e,value:t},bubbles:!0,composed:!0});this.dispatchEvent(i)}}customElements.define("cv-form",de);class ce extends se{static styles=a`
     :host {
       font-family: "Mulish", sans-serif;
       box-sizing: border-box;
@@ -424,11 +464,11 @@
           <div class="experience">
             <h1 class="main-cat experience-title">Experience</h1>
             <div class="experience-jobs">
-              ${this.resData.experience.map((t=>L`<div class="experience-group">
-                    <div class="job-dates">${t.dates}</div>
-                    <div class="job-role">${t.role}</div>
-                    <div class="job-company">${t.company}</div>
-                    <div class="job-description">${t.description}</div>
+              ${this.resData.experience.map((e=>L`<div class="experience-group">
+                    <div class="job-dates">${e.dates}</div>
+                    <div class="job-role">${e.role}</div>
+                    <div class="job-company">${e.company}</div>
+                    <div class="job-description">${e.description}</div>
                   </div>`))}
             </div>
           </div>
@@ -437,30 +477,30 @@
           <div class="contact">
             <div class="main-cat right">Contact</div>
             <div class="contact-details">
-              ${Object.values(this.resData.contact).map((t=>L`<p>${t}</p>`))}
+              ${Object.values(this.resData.contact).map((e=>L`<p>${e}</p>`))}
             </div>
           </div>
           <div class="education">
             <div class="main-cat right">Education</div>
             <div class="education-details">
-              ${this.resData.education.map((t=>L`<div class="education-group">
+              ${this.resData.education.map((e=>L`<div class="education-group">
                     <div class="education-finished">
-                      ${t.dateFinished}
+                      ${e.dateFinished}
                     </div>
-                    <div class="education-degree">${t.degree}</div>
-                    <div class="education-school">${t.school}</div>
+                    <div class="education-degree">${e.degree}</div>
+                    <div class="education-school">${e.school}</div>
                   </div>`))}
             </div>
           </div>
           <div class="skills">
             <div class="main-cat right">Skills</div>
             <ul class="skills-list">
-              ${this.resData.skills.map((t=>L`<li class="skill">${t}</li>`))}
+              ${this.resData.skills.map((e=>L`<li class="skill">${e}</li>`))}
             </ul>
           </div>
         </div>
       </div>
-    `}}customElements.define("build-cv",rt);class lt extends st{static styles=o`
+    `}}customElements.define("build-cv",ce);class pe extends se{static styles=a`
     :host {
       font-family: "Mulish", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f5f5f6;
@@ -520,7 +560,12 @@
     .display-header button:hover {
       box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 7px;
     }
-  `;static properties={resData:{type:Object}};constructor(){super(),this.resData={role:"Software Engineer",name:"Ichabod Crane",summary:"Frontend engineer experienced in developing modular full-stack JavaScript applications using WebComponents, React, Node, Express, RESTful APIs, and SQL databases.",experience:[{dates:"2022-Present",role:"Software Engineer",company:"Technology Company LLC",description:"Lorem ipsum dolor sit amet. At sunt tempora ea labore recusandae ab rerum mollitia non voluptatibus eligendi id quos temporibus et obcaecati dolorem. Sit odio aspernatur At amet incidunt At ullam optio nam dicta quia."},{dates:"2021",role:"Junior Web Developer",company:"Bob's Builders Online",description:"A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum."},{dates:"2020-2021",role:"Intern, Web Development",company:"Bob's Builders Online",description:"A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum."}],contact:{email:"ichabod@crane.dev",phone:"123-456-7890",site:"www.crane.dev",city:"Orlando, FL"},education:[{dateFinished:"2017",degree:"Ph.D. Philosophy",school:"UCLA"},{dateFinished:"2007",degree:"B.A. Philosophy",school:"University of Guam"}],skills:["HTML","CSS","JavaScript","Web Components","Lit","React","NodeJS","Python"]}}connectedCallback(){super.connectedCallback(),this.addEventListener("data-updated-string",this.handleUpdateString),this.addEventListener("data-updated-array-objects",this.handleUpdateArrayOfObjects)}disconnectedCallback(){super.disconnectedCallback(),this.removeEventListener("data-updated-string",this.handleUpdateString),this.removeEventListener("data-updated-array-objects",this.handleUpdateArrayOfObjects)}handleUpdateString(t){this.resData={...this.resData,[t.detail.key]:t.detail.value}}handleUpdateArrayOfObjects(t){this.resData={...this.resData,[t.detail.key]:t.detail.value}}render(){return L`
+
+    .display-header button:active {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+        rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    }
+  `;static properties={resData:{type:Object}};constructor(){super(),this.resData={role:"Software Engineer",name:"Ichabod Crane",summary:"Frontend engineer experienced in developing modular full-stack JavaScript applications using WebComponents, React, Node, Express, RESTful APIs, and SQL databases.",experience:[{dates:"2022-Present",role:"Software Engineer",company:"Technology Company LLC",description:"Lorem ipsum dolor sit amet. At sunt tempora ea labore recusandae ab rerum mollitia non voluptatibus eligendi id quos temporibus et obcaecati dolorem. Sit odio aspernatur At amet incidunt At ullam optio nam dicta quia."},{dates:"2021",role:"Junior Web Developer",company:"Bob's Builders Online",description:"A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum."},{dates:"2020-2021",role:"Intern, Web Development",company:"Bob's Builders Online",description:"A sint labore 33 quos galisum a reiciendis excepturi aut corrupti quod aut nostrum porro. Est adipisci nihil et sapiente perferendis ut laborum commodi et voluptates enim vel reiciendis aliquam qui sequi corrupti sit quod voluptas. Non eaque pariatur est ullam nihil id exercitationem delectus est suscipit galisum eos aliquam harum."}],contact:{email:"ichabod@crane.dev",phone:"123-456-7890",site:"www.crane.dev",city:"Orlando, FL"},education:[{dateFinished:"2017",degree:"Ph.D. Philosophy",school:"UCLA"},{dateFinished:"2007",degree:"B.A. Philosophy",school:"University of Guam"}],skills:["HTML","CSS","JavaScript","Web Components","Lit","React","NodeJS","Python"]}}connectedCallback(){super.connectedCallback(),this.addEventListener("data-updated",this.handleUpdate),this.addEventListener("data-updated-array-objects",this.handleUpdateArrayOfObjects)}disconnectedCallback(){super.disconnectedCallback(),this.removeEventListener("data-updated",this.handleUpdate),this.removeEventListener("data-updated-array-objects",this.handleUpdateArrayOfObjects)}handleUpdate(e){this.resData={...this.resData,[e.detail.key]:e.detail.value}}handleUpdateArrayOfObjects(e){this.resData={...this.resData,[e.detail.key]:e.detail.value}}render(){return L`
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
@@ -548,4 +593,4 @@
           </div>
         </div>
       </div>
-    `}}customElements.define("main-app",lt)})();
+    `}}customElements.define("main-app",pe)})();

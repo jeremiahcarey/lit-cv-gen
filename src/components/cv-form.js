@@ -4,6 +4,9 @@ import { CollapsibleDiv } from "./collapsible-div";
 export class CVForm extends LitElement {
   static properties = {
     resData: { type: Object },
+    experience: { type: Array },
+    education: { type: Array },
+    skills: { type: Array },
   };
 
   static styles = css`
@@ -72,6 +75,11 @@ export class CVForm extends LitElement {
 
   constructor() {
     super();
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.experience = [...this.resData.experience];
   }
 
   render() {
@@ -230,7 +238,11 @@ export class CVForm extends LitElement {
                   </label>
                 </div>
                 ${index + 1 == this.resData.education.length
-                  ? html`<button type="button" class="add-ed-btn">
+                  ? html`<button
+                      type="button"
+                      class="add-ed-btn"
+                      @click=${(e) => console.log("clicked")}
+                    >
                       Add Education
                     </button>`
                   : nothing}
@@ -262,13 +274,17 @@ export class CVForm extends LitElement {
   }
 
   sendUpdateArrayOfObjects(mainKey, indexValue, subKey, newValue) {
+    let nextArr;
+    if (mainKey === "education") {
+      nextArr = structuredClone(this.education);
+      this.education = [...nextArr];
+    } else {
+      nextArr = structuredClone(this.experience);
+      this.experience = [...nextArr];
+    }
+    nextArr[indexValue][subKey] = newValue;
     const event = new CustomEvent("data-updated-array-objects", {
-      detail: {
-        key1: mainKey,
-        index: indexValue,
-        key2: subKey,
-        value: newValue,
-      },
+      detail: { key: mainKey, value: nextArr },
       bubbles: true,
       composed: true,
     });

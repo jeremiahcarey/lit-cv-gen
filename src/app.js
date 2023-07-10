@@ -160,7 +160,6 @@ export class MainApp extends LitElement {
       ...this.resData,
       [event.detail.key]: event.detail.value,
     };
-    console.log(this.resData);
   }
 
   render() {

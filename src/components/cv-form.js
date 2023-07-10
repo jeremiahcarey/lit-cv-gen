@@ -80,6 +80,8 @@ export class CVForm extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.experience = [...this.resData.experience];
+    this.education = [...this.resData.education];
+    this.skills = [...this.resData.skills];
   }
 
   render() {
@@ -174,7 +176,22 @@ export class CVForm extends LitElement {
                   <label
                     >Role:
                     <p class="input-el">
-                      <input type="text" .value="${job.role}" />
+                      <input
+                        type="text"
+                        .value="${job.role}"
+                        @input=${(e) => {
+                          const mainKey = "experience";
+                          const indexValue = index;
+                          const subKey = "role";
+                          const newValue = e.target.value;
+                          this.sendUpdateArrayOfObjects(
+                            mainKey,
+                            indexValue,
+                            subKey,
+                            newValue
+                          );
+                        }}
+                      />
                     </p>
                   </label>
                 </div>
@@ -182,7 +199,22 @@ export class CVForm extends LitElement {
                   <label
                     >Company:
                     <p class="input-el">
-                      <input type="text" placeholder="${job.company}" />
+                      <input
+                        type="text"
+                        .value="${job.company}"
+                        @input=${(e) => {
+                          const mainKey = "experience";
+                          const indexValue = index;
+                          const subKey = "company";
+                          const newValue = e.target.value;
+                          this.sendUpdateArrayOfObjects(
+                            mainKey,
+                            indexValue,
+                            subKey,
+                            newValue
+                          );
+                        }}
+                      />
                     </p>
                   </label>
                 </div>
@@ -190,7 +222,21 @@ export class CVForm extends LitElement {
                   <label
                     >Summary:
                     <p class="input-el">
-                      <textarea .value=${job.description}></textarea>
+                      <textarea
+                        .value=${job.description}
+                        @input=${(e) => {
+                          const mainKey = "experience";
+                          const indexValue = index;
+                          const subKey = "description";
+                          const newValue = e.target.value;
+                          this.sendUpdateArrayOfObjects(
+                            mainKey,
+                            indexValue,
+                            subKey,
+                            newValue
+                          );
+                        }}
+                      ></textarea>
                     </p>
                   </label>
                 </div>
@@ -217,7 +263,22 @@ export class CVForm extends LitElement {
                   <label
                     >Date Finished:
                     <p class="input-el">
-                      <input type="text" placeholder="${school.dateFinished}" />
+                      <input
+                        type="text"
+                        .value="${school.dateFinished}"
+                        @input=${(e) => {
+                          const mainKey = "education";
+                          const indexValue = index;
+                          const subKey = "dateFinished";
+                          const newValue = e.target.value;
+                          this.sendUpdateArrayOfObjects(
+                            mainKey,
+                            indexValue,
+                            subKey,
+                            newValue
+                          );
+                        }}
+                      />
                     </p>
                   </label>
                 </div>
@@ -225,7 +286,22 @@ export class CVForm extends LitElement {
                   <label
                     >Degree/Major:
                     <p class="input-el">
-                      <input type="text" placeholder="${school.degree}" />
+                      <input
+                        type="text"
+                        .value="${school.degree}"
+                        @input=${(e) => {
+                          const mainKey = "education";
+                          const indexValue = index;
+                          const subKey = "degree";
+                          const newValue = e.target.value;
+                          this.sendUpdateArrayOfObjects(
+                            mainKey,
+                            indexValue,
+                            subKey,
+                            newValue
+                          );
+                        }}
+                      />
                     </p>
                   </label>
                 </div>
@@ -233,7 +309,22 @@ export class CVForm extends LitElement {
                   <label
                     >School:
                     <p class="input-el">
-                      <input type="text" placeholder="${school.school}" />
+                      <input
+                        type="text"
+                        .value="${school.school}"
+                        @input=${(e) => {
+                          const mainKey = "education";
+                          const indexValue = index;
+                          const subKey = "school";
+                          const newValue = e.target.value;
+                          this.sendUpdateArrayOfObjects(
+                            mainKey,
+                            indexValue,
+                            subKey,
+                            newValue
+                          );
+                        }}
+                      />
                     </p>
                   </label>
                 </div>

@@ -20,8 +20,6 @@ export class CVForm extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.experience = [...this.resData.experience];
-    this.education = [...this.resData.education];
     this.skills = [...this.resData.skills];
   }
 
@@ -91,7 +89,18 @@ export class CVForm extends LitElement {
             <label
               >Skills (type skills separated by commas):
               <p class="input-el">
-                <textarea .value=${this.resData.skills}></textarea>
+                <textarea
+                  @input=${(e) => {
+                    const dataLocation = "skills";
+                    const newValue = e.target.value
+                      .split(",")
+                      .filter((skill) => skill.trim() != "")
+                      .map((skill) => skill.trim());
+                    this.sendUpdateSimple(dataLocation, newValue);
+                  }}
+                >
+${this.resData.skills.join()}</textarea
+                >
               </p>
             </label>
           </div>

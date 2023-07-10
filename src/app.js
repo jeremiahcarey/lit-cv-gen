@@ -190,7 +190,7 @@ export class MainApp extends LitElement {
               <h1>Result:</h1>
               <button type="button">Download PDF</button>
             </div>
-            <div class="display-cv">
+            <div class="display-cv" id="display-cv">
               <build-cv .resData=${this.resData}></build-cv>
             </div>
           </div>

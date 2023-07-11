@@ -1,4 +1,5 @@
 import { html, css, LitElement } from "lit";
+import html2canvas from "html2canvas";
 
 export class BuildCV extends LitElement {
   static styles = css`
@@ -144,9 +145,14 @@ export class BuildCV extends LitElement {
     super();
   }
 
+  firstUpdated() {
+    this.captureCV = this.renderRoot.querySelector("#capture");
+  }
+
   render() {
     return html`
-      <div class="cv-container">
+      <button type="button" @click=${this.captureCV}>Download PDF</button>
+      <div class="cv-container" id="capture">
         <div class="left-column">
           <div class="basic-info">
             <h1 class="main-cat">${this.resData.role}</h1>
@@ -204,6 +210,12 @@ export class BuildCV extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  captureCV(e) {
+    html2canvas(this.captureCV).then((canvas) => {
+      document.body.appendChild(canvas);
+    });
   }
 }
 

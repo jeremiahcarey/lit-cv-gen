@@ -42,6 +42,11 @@ export const formStyles = css`
     gap: 0.5rem;
   }
 
+  textarea {
+    font-family: inherit;
+    font-size: 0.9rem;
+  }
+
   .input-group input {
     padding: 0.5rem;
     width: 15rem;

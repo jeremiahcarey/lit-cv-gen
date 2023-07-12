@@ -2,6 +2,7 @@ import { LitElement, css, html, nothing } from "lit";
 import { CollapsibleDiv } from "./collapsible-div";
 import { ExperienceMGR } from "./experience-mgr";
 import { EducationMGR } from "./education-mgr";
+import { ContactMGR } from "./contact-mgr";
 import { formStyles } from "./form-styles";
 
 export class CVForm extends LitElement {
@@ -10,6 +11,7 @@ export class CVForm extends LitElement {
     experience: { type: Array },
     education: { type: Array },
     skills: { type: Array },
+    contactInfo: { type: Object },
   };
 
   static styles = [formStyles, css``];
@@ -60,6 +62,10 @@ export class CVForm extends LitElement {
               </p>
             </label>
           </div>
+        </collapsible-div>
+        <collapsible-div top-label="Contact Info">
+        <contact-manager .resData=${this.resData}></contact-manager>
+        </div>
         </collapsible-div>
         <collapsible-div top-label="Personal Summary">
           <div class="input-group">

@@ -35,8 +35,6 @@ export class ExperienceMGR extends LitElement {
     this.experience = [...this.resData.experience];
   }
 
-  
-
   constructor() {
     super();
   }
@@ -147,10 +145,10 @@ export class ExperienceMGR extends LitElement {
   sendUpdateArrayOfObjects(indexValue, subKey, newValue) {
     let nextArr;
     nextArr = structuredClone(this.experience);
-    this.experience = [...nextArr];
     nextArr[indexValue][subKey] = newValue;
+    this.experience = [...nextArr];
     const event = new CustomEvent("data-updated", {
-      detail: { key: "experience", value: nextArr },
+      detail: { key: "experience", value: this.experience },
       bubbles: true,
       composed: true,
     });

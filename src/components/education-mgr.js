@@ -131,10 +131,10 @@ export class EducationMGR extends LitElement {
   sendUpdateArrayOfObjects(indexValue, subKey, newValue) {
     let nextArr;
     nextArr = structuredClone(this.education);
-    this.education = [...nextArr];
     nextArr[indexValue][subKey] = newValue;
+    this.education = [...nextArr];
     const event = new CustomEvent("data-updated", {
-      detail: { key: "education", value: nextArr },
+      detail: { key: "education", value: this.education },
       bubbles: true,
       composed: true,
     });

@@ -1,6 +1,7 @@
 import { html, css, LitElement } from "lit";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import { saveAs } from "file-saver";
+import * as htmlToImage from "html-to-image";
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
 
 export class BuildCV extends LitElement {
   static styles = css`
@@ -168,15 +169,10 @@ export class BuildCV extends LitElement {
     super();
   }
 
-  firstUpdated() {
-    this.captureCV = this.renderRoot.querySelector("#capture");
-    this.forCanvas = this.renderRoot.querySelector("#for-canvas");
-  }
-
   render() {
     return html`
       <button type="button" class="download-btn" @click=${this.captureCV}>
-        Download PDF
+        Download Resume
       </button>
       <div class="cv-container" id="capture">
         <div class="left-column">
@@ -235,29 +231,21 @@ export class BuildCV extends LitElement {
           </div>
         </div>
       </div>
-      <div id="for-canvas"></div>
     `;
   }
 
   captureCV(e) {
-    const opts = {
-      width: this.captureCV.offsetWidth + 20,
-      height: this.captureCV.offsetHeight + 10,
-    };
-    console.log(opts);
-    html2canvas(this.captureCV, opts).then((canvas) => {
-      this.forCanvas.appendChild(canvas);
-      const pdf = new jsPDF({
-        unit: "px",
-        format: [opts.width, opts.height],
+    htmlToImage
+      .toBlob(this.renderRoot.querySelector("#capture"), {
+        backgroundColor: "white",
+      })
+      .then(function (blob) {
+        if (window.saveAs) {
+          window.saveAs(blob, "my-resume.png");
+        } else {
+          FileSaver.saveAs(blob, "my-resume.png");
+        }
       });
-      pdf.html(this.forCanvas, {
-        callback: function (pdf) {
-          pdf.save("resume.pdf");
-        },
-      });
-    });
   }
 }
-
 customElements.define("build-cv", BuildCV);

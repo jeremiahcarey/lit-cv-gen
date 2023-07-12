@@ -1,5 +1,6 @@
 import { html, css, LitElement } from "lit";
 import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export class BuildCV extends LitElement {
   static styles = css`
@@ -7,6 +8,28 @@ export class BuildCV extends LitElement {
       font-family: "Mulish", sans-serif;
       box-sizing: border-box;
       background-color: white;
+      position: relative;
+    }
+
+    .download-btn {
+      position: absolute;
+      top: -4rem;
+      right: 0;
+      font-size: 0.8rem;
+      padding: 0.3rem;
+      border: 2px solid black;
+      border-radius: 8px;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 7px;
+    }
+
+    .download-btn:active {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+        rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
     }
 
     .cv-container {
@@ -147,11 +170,14 @@ export class BuildCV extends LitElement {
 
   firstUpdated() {
     this.captureCV = this.renderRoot.querySelector("#capture");
+    this.forCanvas = this.renderRoot.querySelector("#for-canvas");
   }
 
   render() {
     return html`
-      <button type="button" @click=${this.captureCV}>Download PDF</button>
+      <button type="button" class="download-btn" @click=${this.captureCV}>
+        Download PDF
+      </button>
       <div class="cv-container" id="capture">
         <div class="left-column">
           <div class="basic-info">
@@ -209,12 +235,27 @@ export class BuildCV extends LitElement {
           </div>
         </div>
       </div>
+      <div id="for-canvas"></div>
     `;
   }
 
   captureCV(e) {
-    html2canvas(this.captureCV).then((canvas) => {
-      document.body.appendChild(canvas);
+    const opts = {
+      width: this.captureCV.offsetWidth + 20,
+      height: this.captureCV.offsetHeight + 10,
+    };
+    console.log(opts);
+    html2canvas(this.captureCV, opts).then((canvas) => {
+      this.forCanvas.appendChild(canvas);
+      const pdf = new jsPDF({
+        unit: "px",
+        format: [opts.width, opts.height],
+      });
+      pdf.html(this.forCanvas, {
+        callback: function (pdf) {
+          pdf.save("resume.pdf");
+        },
+      });
     });
   }
 }

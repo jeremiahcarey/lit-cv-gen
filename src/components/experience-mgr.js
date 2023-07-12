@@ -35,6 +35,8 @@ export class ExperienceMGR extends LitElement {
     this.experience = [...this.resData.experience];
   }
 
+  
+
   constructor() {
     super();
   }

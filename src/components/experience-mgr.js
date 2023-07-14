@@ -46,7 +46,15 @@ export class ExperienceMGR extends LitElement {
           <div class="experience-group">
             <div class="job-header">
               <h1>Job #${index + 1}</h1>
-              <button type="button" class="delete-ex-btn">Delete Job</button>
+              ${this.experience.length > 1
+                ? html`<button
+                    type="button"
+                    class="download-btn"
+                    @click=${() => this.deleteJob(index)}
+                  >
+                    Delete Job
+                  </button>`
+                : nothing}
             </div>
             <div class="input-group">
               <label
@@ -131,15 +139,50 @@ export class ExperienceMGR extends LitElement {
                 </p>
               </label>
             </div>
-            ${index + 1 == this.resData.experience.length
-              ? html`<button type="button" class="add-ed-btn">
-                  Add Education
+            ${index + 1 == this.experience.length
+              ? html`<button
+                  type="button"
+                  class="add-ed-btn"
+                  @click=${this.addJob}
+                >
+                  Add Experience
                 </button>`
               : nothing}
           </div>
         `
       )}
     `;
+  }
+
+  deleteJob(indexValue) {
+    console.log(indexValue);
+    let nextArr = structuredClone(this.experience);
+    nextArr.splice(indexValue, 1);
+    this.experience = [...nextArr];
+    const event = new CustomEvent("data-updated", {
+      detail: { key: "experience", value: this.experience },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(event);
+  }
+
+  addJob() {
+    let nextArr;
+    nextArr = structuredClone(this.experience);
+    nextArr[this.experience.length] = {
+      dates: "",
+      role: "",
+      company: "",
+      description: "",
+    };
+    this.experience = [...nextArr];
+    const event = new CustomEvent("data-updated", {
+      detail: { key: "experience", value: this.experience },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(event);
   }
 
   sendUpdateArrayOfObjects(indexValue, subKey, newValue) {

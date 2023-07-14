@@ -46,9 +46,14 @@ export class EducationMGR extends LitElement {
           <div class="education-group">
             <div class="ed-header">
               <h1>Education #${index + 1}</h1>
-              <button type="button" class="delete-ed-btn">
-                Delete Education
-              </button>
+              ${this.education.length > 1
+                ? html`<button
+                    type="button"
+                    @click=${() => this.deleteEd(index)}
+                  >
+                    Delete Education
+                  </button>`
+                : nothing}
             </div>
             <div class="input-group">
               <label
@@ -117,7 +122,7 @@ export class EducationMGR extends LitElement {
               ? html`<button
                   type="button"
                   class="add-ed-btn"
-                  @click=${(e) => console.log("clicked")}
+                  @click=${this.addEd}
                 >
                   Add Education
                 </button>`
@@ -126,6 +131,36 @@ export class EducationMGR extends LitElement {
         `
       )}
     `;
+  }
+
+  deleteEd(indexValue) {
+    console.log(indexValue);
+    let nextArr = structuredClone(this.education);
+    nextArr.splice(indexValue, 1);
+    this.education = [...nextArr];
+    const event = new CustomEvent("data-updated", {
+      detail: { key: "education", value: this.education },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(event);
+  }
+
+  addEd() {
+    let nextArr;
+    nextArr = structuredClone(this.education);
+    nextArr[this.education.length] = {
+      dateFinished: "",
+      degree: "",
+      school: "",
+    };
+    this.education = [...nextArr];
+    const event = new CustomEvent("data-updated", {
+      detail: { key: "education", value: this.education },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(event);
   }
 
   sendUpdateArrayOfObjects(indexValue, subKey, newValue) {
